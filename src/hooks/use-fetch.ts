@@ -7,10 +7,7 @@ interface CacheResponse<T> {
  data: T | null;
  error: null | typeof Error;
 }
-export async function useFetch<CacheData>(
- url: string,
- deltaCacheReval: number = 24
-) {
+export function useFetch<CacheData>(url: string, deltaCacheReval: number = 24) {
  const [apiResult, setApiResult] = useState<CacheResponse<CacheData>>({
   isLoading: false,
   data: null,
