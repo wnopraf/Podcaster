@@ -1,31 +1,32 @@
-import React, { Dispatch, useContext, useEffect, useState } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 import { useFetch } from "../../hooks/use-fetch";
 import { PodCast, PodCastApi } from "../../types";
 
 import { PodcastItem } from "./components/podcast-item";
 import { useSearch } from "./hooks/search-util";
-import { GlobalContext } from "../../App";
+import { Loader } from "../../ui/Loader";
 
-export function PodcastList({
- setIsLoading,
-}: {
- setIsLoading: Dispatch<boolean>;
-}) {
+export function PodcastList() {
  const { data, error, isLoading } = useFetch<PodCastApi>(
+  "podcasList",
   import.meta.env.VITE_PODCASTS
  );
  const { filteredPodcasts, setSearch } = useSearch(
   data?.feed?.entry as PodCast[]
  );
+
  if (error) {
   console.error(error);
   return null;
  }
  if (isLoading) {
-  setIsLoading(isLoading);
-  return "skeleton";
+  return (
+   <div className="absolute top-10 right-14">
+    <Loader />
+   </div>
+  );
  }
- setIsLoading(false);
+ //setIsLoading(false);
  const renderedPodcast = filteredPodcasts?.length
   ? filteredPodcasts
   : data?.feed.entry;
