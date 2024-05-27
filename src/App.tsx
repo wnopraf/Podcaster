@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Link, Router } from "@reach/router";
+import React, { Dispatch, useState } from "react";
+import { Loader } from "./ui/Loader";
+import { PodcastList } from "./views/podcast-list";
 
-function App() {
-  const [count, setCount] = useState(0)
+export const GlobalContext = React.createContext<{
+ setIsLoading: Dispatch<boolean>;
+ isLoading: boolean;
+} | null>(null);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export function App() {
+ const [isLoading, setIsLoading] = useState(true);
+ return (
+  <div className="lg:container lg:mx-auto">
+   <header className="flex justify-between items-center py-6 border-b border-b-light-400">
+    <h1 className=" text-2xl text-blue-300">
+     <Link to="/">Podcaster</Link>
+    </h1>
+    {isLoading && <Loader />}
+   </header>
+
+   <Router>
+    <PodcastList path="/" setIsLoading={setIsLoading} />
+    {/*  <PodcastDetail path='podcast' >
+            <EpisodeList path=':podcastId'/>
+            <EpisodeDetail path= ':podcastId/episode/:episodeId' />
+        </PodcastDetail> */}
+   </Router>
+  </div>
+ );
 }
-
-export default App
