@@ -34,7 +34,7 @@ export function PodcastList({
    />
    {/* auto-rows-[150px] to keep item height conroled */}
    <div className=" mt-[5rem] p-7 grid grid-cols-4 gap-y-48 gap-x-8 ">
-    {data?.feed.entry.map((elm) => {
+    {filteredPodcasts?.map((elm) => {
      return (
       <PodcastItem
        title={elm["im:name"].label}
@@ -53,6 +53,9 @@ const PodcastSearch: React.FunctionComponent<{
  filterResults?: number;
 }> = ({ setState, filterResults }) => {
  const [value, setValue] = useState<string>();
+ useEffect(() => {
+  setState(value as string);
+ }, [value]);
  return (
   <div className=" h-9 flex items-center justify-end mt-5">
    <span className="mr-4 px-1 bg-blue-300 rounded-sm text-white text-sm font-bold">

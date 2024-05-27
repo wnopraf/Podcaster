@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Dispatch, useEffect, useState } from "react";
 
 let cache: unknown = null;
 let cacheTimeStamp = 0;
@@ -9,7 +9,7 @@ interface CacheResponse<T> {
 }
 export function useFetch<CacheData>(url: string, deltaCacheReval: number = 24) {
  const [apiResult, setApiResult] = useState<CacheResponse<CacheData>>({
-  isLoading: false,
+  isLoading: true,
   data: null,
   error: null,
  });
@@ -20,11 +20,12 @@ export function useFetch<CacheData>(url: string, deltaCacheReval: number = 24) {
    const deltaCacheRevalToMs = deltaCacheReval * 60 * 60 * 1000;
    const deltaCacheDiff = Date.now() - cacheTimeStamp;
    const isRevalidated = deltaCacheDiff > deltaCacheRevalToMs;
-   setApiResult((state) => ({ ...state, isLoading: true }));
+
    if (isRevalidated) {
     try {
      const data = (await fetch(url).then((data) => data.json())) as CacheData;
      setApiResult((state) => ({ ...state, data, isLoading: false }));
+
      cache = data;
      cacheTimeStamp = Date.now();
     } catch (e) {
