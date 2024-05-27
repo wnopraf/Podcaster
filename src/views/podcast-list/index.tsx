@@ -25,21 +25,25 @@ export function PodcastList({
   setIsLoading(isLoading);
   return "skeleton";
  }
-
+ setIsLoading(false);
+ const renderedPodcast = filteredPodcasts?.length
+  ? filteredPodcasts
+  : data?.feed.entry;
  return (
   <div>
    <PodcastSearch
     setState={setSearch}
     filterResults={filteredPodcasts?.length}
    />
-   {/* auto-rows-[150px] to keep item height conroled */}
+   {/* auto-rows-[150px] to keep item height controled */}
    <div className=" mt-[5rem] p-7 grid grid-cols-4 gap-y-48 gap-x-8 ">
-    {filteredPodcasts?.map((elm) => {
+    {renderedPodcast?.map((elm) => {
      return (
       <PodcastItem
        title={elm["im:name"].label}
        author={elm["im:artist"].label}
        imgUrl={elm["im:image"][0].label}
+       podcastId={elm.id.label}
       />
      );
     })}
