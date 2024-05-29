@@ -35,7 +35,7 @@ export function EpisodeList() {
           </thead>
           {data.results.map((elm) => {
             return (
-              <tr className=" grid grid-cols-[70%,1fr,1fr] items-center h-10 even:bg-gray-100 border-t-2 border-b-2 border-gray-200">
+              <tr className=" grid grid-cols-[70%,1fr,1fr] auto-rows-[50px] items-center even:bg-gray-100 border-t-2 border-b-2 border-gray-200">
                 <td className="text-blue-500 pl-3">
                   {
                     <Link to={href + "/episode/" + elm.trackId}>
