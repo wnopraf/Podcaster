@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { App } from "./App.tsx";
+import { App } from "./views/app/index.tsx";
 import "./index.css";
 import { PodcastDetail } from "./views/podcast-detail/index.tsx";
 import { PodcastList } from "./views/podcast-list/index.tsx";
@@ -9,7 +9,7 @@ import { getPodcasts } from "./views/podcast-list/podcasts.ts";
 import {
   EpisodeList,
   getEpisodes,
-} from "./views/podcast-detail/components/episode-list.tsx";
+} from "./views/podcast-detail/episode-list-view/episode-list.tsx";
 
 const router = createBrowserRouter([
   {
