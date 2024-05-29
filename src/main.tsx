@@ -10,6 +10,7 @@ import {
   EpisodeList,
   getEpisodes,
 } from "./views/podcast-detail/episode-list-view/episode-list.tsx";
+import { EpisodeDetail } from "./views/podcast-detail/episode-detail-view/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -31,11 +32,16 @@ const router = createBrowserRouter([
             loader: getEpisodes,
             element: <EpisodeList />,
           },
+          {
+            path: "episode/:episodeId",
+            element: <EpisodeDetail />,
+            loader: getEpisodes,
+          },
+          {
+            path: "hola",
+            element: <div>hola</div>,
+          },
         ],
-      },
-      {
-        path: "hola",
-        element: <div>hola</div>,
       },
     ],
   },

@@ -1,6 +1,7 @@
-import { useParams, useLoaderData, Link, useHref } from "react-router-dom";
+import { useLoaderData, Link, useParams } from "react-router-dom";
 import { Cache, cacheApiFetcher } from "../../../lib/cache";
 import { IPodcastDetail } from "../../../types";
+import { useCallback } from "react";
 const makeUrlDetailPodcast = (id: string) => {
   const rootUrl = `https://itunes.apple.com/lookup?id=${id}&media=podcast
        &entity=podcastEpisode&limit=20`;
@@ -18,7 +19,13 @@ export async function getEpisodes({ params }: { podcastId: string }) {
 }
 export function EpisodeList() {
   const data = useLoaderData() as IPodcastDetail;
-  const href = useHref("/");
+  const { podcastId } = useParams();
+  const createEpisodeDetailUrl = useCallback(
+    (episodeId: number) => {
+      return `podcast/${podcastId}/episode/${episodeId}`;
+    },
+    [podcastId]
+  );
   return (
     <>
       <header className="shadow shadow-gray-400">
@@ -37,11 +44,7 @@ export function EpisodeList() {
             return (
               <tr className=" grid grid-cols-[70%,1fr,1fr] auto-rows-[50px] items-center even:bg-gray-100 border-t-2 border-b-2 border-gray-200">
                 <td className="text-blue-500 pl-3">
-                  {
-                    <Link to={href + "/episode/" + elm.trackId}>
-                      {elm.trackName}
-                    </Link>
-                  }
+                  {<Link to={`episode/${elm.trackId}`}>{elm.trackName}</Link>}
                 </td>
                 <td className="text-gray-600">
                   {new Date(elm.releaseDate).toLocaleDateString()}

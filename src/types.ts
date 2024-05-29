@@ -87,7 +87,7 @@ export interface IPodcastDetail {
     releaseDate: string;
     trackTimeMillis: number;
     description: string;
-    epidosdeUrl: string;
+    episodeUrl: string;
     artworkUrl160: string;
     episodeContentTipe: "audio";
     shortDescription: string;
