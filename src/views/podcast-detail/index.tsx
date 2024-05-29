@@ -20,11 +20,17 @@ export function PodcastDetail() {
         </div>
         <div className="mt-8 py-6 border-t border-b border-gray-300">
           <h1 className="font-semibold">{podcast?.["im:name"].label}</h1>
-          <p>{podcast?.["im:artist"].label}</p>
+          <p className=" italic">
+            <span>by</span>
+            <span className="capitalize"> {podcast?.["im:artist"].label}</span>
+          </p>
         </div>
         <div className="mt-8">
-          <h2 className="mb-1 font-semibold">Description</h2>
-          <p dangerouslySetInnerHTML={{ __html: podcast?.summary.label }}></p>
+          <h2 className="mb-1 font-semibold text-gray-800">Description</h2>
+          <p
+            className="italic"
+            dangerouslySetInnerHTML={{ __html: podcast?.summary.label }}
+          ></p>
         </div>
       </aside>
       <div className="flex-1">

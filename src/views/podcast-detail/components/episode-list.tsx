@@ -26,15 +26,15 @@ export function EpisodeList() {
           Episodes: &nbsp;{data.resultCount}
         </h1>
       </header>
-      <table className="mt-10 ">
-        <thead>
-          <th className=" w-4/5 text-left">Title</th>
-          <th className=" w-1/5 text-left">Date</th>
-          <th className=" w-1/5 text-left">Duration</th>
+      <table className=" w-full mt-10 p-1 shadow shadow-gray-400 ">
+        <thead className="grid grid-cols-[70%,1fr,1fr] pt-8 pb-2">
+          <th className=" pl-3 text-left">Title</th>
+          <th className="  text-left">Date</th>
+          <th className="  text-left">Duration</th>
         </thead>
         {data.results.map((elm) => {
           return (
-            <tr className="h-10 even:bg-gray-100 border-t-2 border-b-2 border-gray-300">
+            <tr className=" grid grid-cols-[70%,1fr,1fr] items-center h-10 even:bg-gray-100 border-t-2 border-b-2 border-gray-300">
               <td className="text-blue-500 pl-3">
                 {
                   <Link to={href + "/episode/" + elm.trackId}>
@@ -42,8 +42,12 @@ export function EpisodeList() {
                   </Link>
                 }
               </td>
-              <td>{new Date(elm.releaseDate).toLocaleDateString()}</td>
-              <td>{millsToMinuteFormat(elm.trackTimeMillis)}</td>
+              <td className="text-gray-600">
+                {new Date(elm.releaseDate).toLocaleDateString()}
+              </td>
+              <td className="text-gray-600">
+                {millsToMinuteFormat(elm.trackTimeMillis)}
+              </td>
             </tr>
           );
         })}
@@ -55,7 +59,9 @@ export function EpisodeList() {
 const millsToMinuteFormat = (mills: number) => {
   if (!mills) return "00:00";
   const minutes = Math.trunc(mills / 1000 / 60);
-  const secs = (mills / 1000) % 60;
-  const isSecTenDivisible = secs % 10 === 0;
-  return `${minutes}:${secs}${isSecTenDivisible ? 0 : ""}`;
+  const secs = minutes > 0 ? (mills / 1000) % 60 : Math.trunc(mills / 1000);
+
+  return `${minutes}:${
+    secs.toString().length < 2 ? secs.toString() + 0 : secs
+  }`;
 };
