@@ -1,40 +1,33 @@
 import React, { Dispatch, useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import { useFetch } from "../../hooks/use-fetch";
 import { PodCast, PodCastApi } from "../../types";
 
 import { PodcastItem } from "./components/podcast-item";
 import { useSearch } from "./hooks/search-util";
 import { Loader } from "../../ui/Loader";
+import { getPodcasts } from "./podcasts";
 
+export async function podcastsLoader() {
+ const data = await getPodcasts();
+ return data;
+}
 export function PodcastList() {
- const { data, error, isLoading } = useFetch<PodCastApi>(
+ /* const { data, error, isLoading } = useFetch<PodCastApi>(
   "podcasList",
   import.meta.env.VITE_PODCASTS
- );
- const { filteredPodcasts, setSearch } = useSearch(
-  data?.feed?.entry as PodCast[]
- );
+ ); */
+ const data = useLoaderData();
+ const { filteredPodcasts, setSearch } = useSearch(data as PodCast[]);
 
- if (error) {
-  console.error(error);
-  return null;
- }
- if (isLoading) {
-  return (
-   <div className="absolute top-10 right-14">
-    <Loader />
-   </div>
-  );
- }
- //setIsLoading(false);
  const renderedPodcast = filteredPodcasts?.length
   ? filteredPodcasts
-  : data?.feed.entry;
+  : (data as PodCast[]);
  return (
   <div>
    <PodcastSearch
     setState={setSearch}
-    filterResults={filteredPodcasts?.length}
+    filterResults={renderedPodcast?.length}
    />
    {/* auto-rows-[150px] to keep item height controled */}
    <div className=" mt-[5rem] p-7 grid grid-cols-4 gap-y-48 gap-x-8 ">
@@ -44,7 +37,7 @@ export function PodcastList() {
        title={elm["im:name"].label}
        author={elm["im:artist"].label}
        imgUrl={elm["im:image"][0].label}
-       podcastId={elm.id.label}
+       podcastId={elm.id.attributes["im:id"]}
       />
      );
     })}
