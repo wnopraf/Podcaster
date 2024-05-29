@@ -53,7 +53,9 @@ export function EpisodeList() {
 }
 
 const millsToMinuteFormat = (mills: number) => {
+  if (!mills) return "00:00";
   const minutes = Math.trunc(mills / 1000 / 60);
   const secs = (mills / 1000) % 60;
-  return `${minutes}:${secs.toFixed(2)}`;
+  const isSecTenDivisible = secs % 10 === 0;
+  return `${minutes}:${secs}${isSecTenDivisible ? 0 : ""}`;
 };
