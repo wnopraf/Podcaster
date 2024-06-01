@@ -13,10 +13,6 @@ export async function podcastsLoader() {
   return data;
 }
 export function PodcastList() {
-  /* const { data, error, isLoading } = useFetch<PodCastApi>(
-  "podcasList",
-  import.meta.env.VITE_PODCASTS
- ); */
   const data = useLoaderData();
   const { filteredPodcasts, setSearch } = useSearch(data as PodCast[]);
 
