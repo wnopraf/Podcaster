@@ -1,7 +1,6 @@
 import { Link, Outlet, useNavigation } from "react-router-dom";
-import React, { Dispatch, useState } from "react";
+import React, { Dispatch } from "react";
 import { Loader } from "../../ui/Loader";
-import { PodcastList } from "../podcast-list";
 
 export const GlobalContext = React.createContext<{
   setIsLoading: Dispatch<boolean>;

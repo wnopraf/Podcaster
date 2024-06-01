@@ -35,7 +35,9 @@ export function PodcastDetail() {
           <h2 className="mb-1 font-semibold text-gray-800">Description</h2>
           <p
             className="italic"
-            dangerouslySetInnerHTML={{ __html: podcast?.summary.label }}
+            dangerouslySetInnerHTML={{
+              __html: podcast?.summary.label as string,
+            }}
           ></p>
         </div>
       </aside>

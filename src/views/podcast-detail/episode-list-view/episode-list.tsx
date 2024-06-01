@@ -1,7 +1,7 @@
-import { useLoaderData, Link, useParams } from "react-router-dom";
+import { useLoaderData, Link, LoaderFunctionArgs } from "react-router-dom";
 import { Cache, cacheApiFetcher } from "../../../lib/cache";
 import { IPodcastDetail } from "../../../types";
-import { useCallback } from "react";
+
 const makeUrlDetailPodcast = (id: string) => {
   const rootUrl = `https://itunes.apple.com/lookup?id=${id}&media=podcast
        &entity=podcastEpisode&limit=20`;
@@ -9,8 +9,8 @@ const makeUrlDetailPodcast = (id: string) => {
 };
 
 const podCastDetailCache = new Cache<IPodcastDetail>();
-export async function getEpisodes({ params }: { podcastId: string }) {
-  const podcastUrl = makeUrlDetailPodcast(params.podcastId);
+export async function getEpisodes({ params }: LoaderFunctionArgs<"podCastId">) {
+  const podcastUrl = makeUrlDetailPodcast(params.podcastId as string);
   const data = await cacheApiFetcher<IPodcastDetail>(
     podCastDetailCache,
     podcastUrl
@@ -19,13 +19,7 @@ export async function getEpisodes({ params }: { podcastId: string }) {
 }
 export function EpisodeList() {
   const data = useLoaderData() as IPodcastDetail;
-  const { podcastId } = useParams();
-  const createEpisodeDetailUrl = useCallback(
-    (episodeId: number) => {
-      return `podcast/${podcastId}/episode/${episodeId}`;
-    },
-    [podcastId]
-  );
+
   return (
     <>
       <header className="shadow shadow-gray-400">
