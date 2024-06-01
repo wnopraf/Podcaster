@@ -10,9 +10,9 @@ export const GlobalContext = React.createContext<{
 export function App() {
   const navigation = useNavigation();
   return (
-    <div className="lg:container lg:mx-auto">
-      <header className="flex justify-between items-center py-6 border-b border-b-light-400">
-        <h1 className=" text-2xl text-blue-300">
+    <div className="container mx-auto px-5">
+      <header className="flex justify-center md:justify-between  py-6 border-b border-b-light-400">
+        <h1 className=" text-4xl md:text-2xl text-blue-400">
           <Link to="/">Podcaster</Link>
         </h1>
         {navigation.state === "loading" && <Loader />}
