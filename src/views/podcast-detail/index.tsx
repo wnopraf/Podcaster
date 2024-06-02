@@ -9,8 +9,8 @@ export function PodcastDetail() {
     return elm.id.attributes["im:id"] === params.podcastId;
   });
   return (
-    <div className="flex gap-28  mt-10">
-      <aside className="w-1/3 h-max p-5 shadow shadow-gray-400">
+    <div className="flex flex-col gap-y-14 md:gap-x-6 lg:flex-row    mt-10">
+      <aside className=" w-full text-center lg:text-left lg:w-1/3 h-max p-5 shadow shadow-gray-400">
         <Link to=".">
           <div className="w-24 mx-auto">
             <img

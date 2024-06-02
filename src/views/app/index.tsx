@@ -19,10 +19,9 @@ export function App() {
       </header>
 
       <Outlet />
-      <footer className=" py-10 md:py-20 bg-blue-300 text-center text-white mt-6">
-        <p>
-          <span className=" text-xl mr-1"></span> podcasts by Wnopraf
-        </p>
+      <footer className=" py-5 lg:py-8 flex items-center justify-center  bg-blue-300 text-center text-white font-bold mt-6">
+        <span className=" text-xl mr-1"></span>
+        <p>podcasts by Wnopraf</p>
       </footer>
     </div>
   );

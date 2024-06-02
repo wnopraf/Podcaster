@@ -9,7 +9,7 @@ export function EpisodeDetail() {
   });
 
   return (
-    <div className=" p-5 shadow shadow-gray-500">
+    <div className="text-center lg:text-left  p-5 shadow shadow-gray-500">
       <div>
         <h1 className="text-2xl font-semibold mb-5">{episode?.trackName}</h1>
         <p
@@ -17,7 +17,7 @@ export function EpisodeDetail() {
         ></p>
       </div>
       <figure className="mt-5">
-        <audio controls src={episode?.episodeUrl}></audio>
+        <audio className="w-full" controls src={episode?.episodeUrl}></audio>
       </figure>
     </div>
   );

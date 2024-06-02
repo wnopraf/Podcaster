@@ -27,28 +27,43 @@ export function EpisodeList() {
           Episodes: &nbsp;{data.resultCount}
         </h1>
       </header>
-      <div className="px-4 shadow shadow-gray-500">
+      <div className="px-4 pb-4 shadow shadow-gray-500">
         <table className=" w-full mt-10 p-1  ">
-          <thead className="grid grid-cols-[70%,1fr,1fr] pt-8 pb-2">
+          <thead className=" hidden sm:grid grid-cols-1 justify-items-center gap-x-2 pt-8 pb-2 sm:grid-cols-[70%,1fr,1fr] sm:justify-items-start ">
             <th className=" pl-3 text-left">Title</th>
             <th className="  text-left">Date</th>
             <th className="  text-left">Duration</th>
           </thead>
-          {data.results.map((elm) => {
-            return (
-              <tr className=" grid grid-cols-[70%,1fr,1fr] auto-rows-[50px] items-center even:bg-gray-100 border-t-2 border-b-2 border-gray-200">
-                <td className="text-blue-500 pl-3 line-clamp-2">
-                  {<Link to={`episode/${elm.trackId}`}>{elm.trackName}</Link>}
-                </td>
-                <td className="text-gray-600">
-                  {new Date(elm.releaseDate).toLocaleDateString()}
-                </td>
-                <td className="text-gray-600">
-                  {millsToMinuteFormat(elm.trackTimeMillis)}
-                </td>
-              </tr>
-            );
-          })}
+          <tbody>
+            {data.results.map((elm) => {
+              return (
+                /* auto-rows-[50px] */
+                <tr
+                  key={elm.trackId}
+                  className=" grid grid-cols-1 justify-items-center gap-x-2 py-1 items-center even:bg-gray-100 border-t-2 border-b-2 border-gray-200 sm:grid-cols-[70%,1fr,1fr] sm:gap-x-0 sm:justify-items-start  "
+                >
+                  <td className=" w-full flex gap-x-4 px-2 justify-between text-blue-500  line-clamp-2 md:flex-none md:pl-3 md:gap-x-0">
+                    <span className="  text-black font-semibold capitalize sm:hidden">
+                      title
+                    </span>
+                    {<Link to={`episode/${elm.trackId}`}>{elm.trackName}</Link>}
+                  </td>
+                  <td className="w-full flex gap-x-4 px-2 justify-between text-gray-600 line-clamp-2 md:flex-none md:pl-3 md:gap-x-0">
+                    <span className=" font-semibold capitalize sm:hidden">
+                      date
+                    </span>{" "}
+                    {new Date(elm.releaseDate).toLocaleDateString()}
+                  </td>
+                  <td className="w-full flex gap-x-4 px-2 justify-between text-gray-600 line-clamp-2 md:flex-none md:pl-3 md:gap-x-0">
+                    <span className=" font-semibold capitalize sm:hidden">
+                      duration
+                    </span>{" "}
+                    {millsToMinuteFormat(elm.trackTimeMillis)}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
       </div>
     </>
