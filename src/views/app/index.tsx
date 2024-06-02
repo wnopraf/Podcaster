@@ -19,6 +19,11 @@ export function App() {
       </header>
 
       <Outlet />
+      <footer className=" py-10 md:py-20 bg-blue-300 text-center text-white mt-6">
+        <p>
+          <span className=" text-xl mr-1"></span> podcasts by Wnopraf
+        </p>
+      </footer>
     </div>
   );
 }
