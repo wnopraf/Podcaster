@@ -21,10 +21,10 @@ export function PodcastItem({ title, author, imgUrl, podcastId }: PodcastItem) {
         />
       </div>
       <div className="mt-3 text-center">
-        <h4 className="capitalize text-clamp-2" title={title}>
+        <h4 className="capitalize line-clamp-2" title={title}>
           {title}
         </h4>
-        <span className="block mt-1 text-clamp-1 text-gray-500" title={author}>
+        <span className="block mt-1 line-clamp-1 text-gray-500" title={author}>
           Author:&nbsp;{author}
         </span>
       </div>

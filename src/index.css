@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
+/* @layer utilities {
  .text-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -15,4 +15,4 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
  }
-}
+} */
