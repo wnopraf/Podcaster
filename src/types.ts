@@ -92,5 +92,6 @@ export interface IPodcastDetail {
     episodeContentTipe: "audio";
     shortDescription: string;
     collectionName: string;
+    kind: "podcast" | "podcast-episode";
   }[];
 }
