@@ -11,6 +11,7 @@ import {
   getEpisodes,
 } from "./views/podcast-detail/episode-list-view/episode-list.tsx";
 import { EpisodeDetail } from "./views/podcast-detail/episode-detail-view/index.tsx";
+import { ErrorPage } from "./ui/ErrorPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
         path: "podcast/:podcastId",
         element: <PodcastDetail />,
         loader: getPodcasts,
+        errorElement: <ErrorPage />,
         children: [
           {
             index: true,

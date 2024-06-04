@@ -9,7 +9,7 @@ export function PodcastDetail() {
     return elm.id.attributes["im:id"] === params.podcastId;
   });
   return (
-    <div className="flex flex-col gap-y-14 md:gap-x-6 lg:flex-row    mt-10">
+    <div className="flex flex-col gap-y-14 md:gap-x-6 lg:flex-row mt-10 min-h-[75vh]">
       <aside className=" w-full text-center lg:text-left lg:w-1/3 h-max p-5 shadow shadow-gray-400">
         <Link to=".">
           <div className="w-24 mx-auto">

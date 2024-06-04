@@ -20,7 +20,7 @@ export function PodcastList() {
     ? filteredPodcasts
     : (data as PodCast[]);
   return (
-    <div>
+    <div className="min-h-[75vh]">
       <PodcastSearch
         setState={setSearch}
         filterResults={renderedPodcast?.length}
