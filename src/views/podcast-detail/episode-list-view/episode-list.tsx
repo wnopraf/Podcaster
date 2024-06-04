@@ -2,6 +2,7 @@ import { useLoaderData, Link, LoaderFunctionArgs } from "react-router-dom";
 import { cacheApiFetcher } from "../../../lib/cache";
 import { IPodcastDetail } from "../../../types";
 import { podCastDetailCache } from "./episode-list-cache";
+import { millsToMinuteFormat } from "./util";
 
 const makeUrlDetailPodcast = (id: string) => {
   const rootUrl = `https://itunes.apple.com/lookup?id=${id}&media=podcast
@@ -30,8 +31,8 @@ export function EpisodeList() {
       </header>
       <div className="px-4 pb-4 shadow shadow-gray-500">
         <table className=" w-full mt-10 p-1  ">
-          <thead className=" hidden sm:grid grid-cols-1 justify-items-center gap-x-2 pt-8 pb-2 sm:grid-cols-[70%,2fr,1fr] sm:justify-items-start ">
-            <th className=" pl-3 text-left">Title</th>
+          <thead className=" hidden px-2 sm:grid grid-cols-1 justify-items-center gap-x-2 pt-8 pb-2 sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start ">
+            <th className=" text-left">Title</th>
             <th className="  text-left">Date</th>
             <th className="  text-left">Duration</th>
           </thead>
@@ -43,9 +44,9 @@ export function EpisodeList() {
                   /* auto-rows-[50px] */
                   <tr
                     key={elm.trackId}
-                    className=" grid grid-cols-1 justify-items-center gap-x-2 py-1 items-center even:bg-gray-100 border-t-2 border-b-2 border-gray-200 sm:grid-cols-[70%,2fr,1fr] sm:gap-x-0 sm:justify-items-start  "
+                    className=" px-2 grid grid-cols-1 justify-items-center gap-x-2 py-1 items-center even:bg-gray-100 border-t-2 border-b-2 border-gray-200 sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start  "
                   >
-                    <td className=" w-full flex gap-x-4 px-2 justify-between text-blue-500  line-clamp-2 md:flex-none md:pl-3 md:gap-x-0">
+                    <td className=" w-full flex justify-between text-blue-500  line-clamp-2 md:flex-none  ">
                       <span className="  text-black font-semibold capitalize sm:hidden">
                         title
                       </span>
@@ -59,13 +60,13 @@ export function EpisodeList() {
                         </Link>
                       }
                     </td>
-                    <td className="w-full flex gap-x-4 px-2 justify-between text-gray-600 line-clamp-2 md:flex-none md:pl-3 md:gap-x-0">
+                    <td className="w-full flex gap-x-4  justify-between text-gray-600 line-clamp-2 md:flex-none  ">
                       <span className=" font-semibold capitalize sm:hidden">
                         date
                       </span>{" "}
                       {new Date(elm.releaseDate).toLocaleDateString()}
                     </td>
-                    <td className="w-full flex gap-x-4 px-2 justify-between text-gray-600 line-clamp-2 md:flex-none md:pl-3 md:gap-x-0">
+                    <td className="w-full flex gap-x-4 justify-between text-gray-600 line-clamp-2 md:flex-none  md:gap-x-0">
                       <span className=" font-semibold capitalize sm:hidden">
                         duration
                       </span>{" "}
@@ -80,29 +81,3 @@ export function EpisodeList() {
     </>
   );
 }
-
-const millsToMinuteFormat = (mills: number) => {
-  if (!mills) return "00:00";
-
-  let seconds: number | undefined = mills / 1000;
-  let minutes: number | undefined;
-  let hours: number | undefined;
-
-  if (seconds > 60) {
-    minutes = Math.trunc(seconds / 60);
-    seconds = seconds % 60;
-    if (minutes > 60) {
-      hours = Math.trunc(minutes / 60);
-      return `${toDecimal(hours)}:${toDecimal(minutes)}:${toDecimal(seconds)}`;
-    }
-    return `${toDecimal(minutes)}:${toDecimal(seconds)}`;
-  } else {
-    return `0:${toDecimal(Math.trunc(seconds))}`;
-  }
-  function toDecimal(time: number): string {
-    if (time < 10) {
-      return "0" + time;
-    }
-    return time.toString();
-  }
-};

@@ -26,7 +26,7 @@ export function PodcastList() {
         filterResults={renderedPodcast?.length}
       />
       {/* auto-rows-[150px] to keep item height controled */}
-      <div className=" mt-[8rem] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-[8rem] gap-x-[3rem] *:h-max ">
+      <div className=" mt-[8rem] grid grid-cols-1 justify-items-center sm:grid-cols-2 sm:justify-items-stretch lg:grid-cols-4 gap-y-[8rem] gap-x-[3rem] *:h-max ">
         {/* <div className=" mt-[8rem] p-7 flex flex-wrap *:w-1/5 gap-x-[1rem] gap-y-[5rem] justify-evenly *:h-max"> */}
         {renderedPodcast?.map((elm) => {
           return (
