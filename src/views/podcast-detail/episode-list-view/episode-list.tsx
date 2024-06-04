@@ -1,6 +1,7 @@
 import { useLoaderData, Link, LoaderFunctionArgs } from "react-router-dom";
-import { Cache, cacheApiFetcher } from "../../../lib/cache";
+import { cacheApiFetcher } from "../../../lib/cache";
 import { IPodcastDetail } from "../../../types";
+import { podCastDetailCache } from "./episode-list-cache";
 
 const makeUrlDetailPodcast = (id: string) => {
   const rootUrl = `https://itunes.apple.com/lookup?id=${id}&media=podcast
@@ -8,12 +9,12 @@ const makeUrlDetailPodcast = (id: string) => {
   return rootUrl;
 };
 
-const podCastDetailCache = new Cache<IPodcastDetail>();
-export async function getEpisodes({ params }: LoaderFunctionArgs<"podCastId">) {
+export async function getEpisodes({ params }: LoaderFunctionArgs<"podcastId">) {
   const podcastUrl = makeUrlDetailPodcast(params.podcastId as string);
+  podCastDetailCache.setCache(params.podcastId as string, podcastUrl);
   const data = await cacheApiFetcher<IPodcastDetail>(
-    podCastDetailCache,
-    podcastUrl
+    params.podcastId as string,
+    podCastDetailCache
   );
   return data;
 }

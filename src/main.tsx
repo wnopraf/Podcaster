@@ -5,7 +5,7 @@ import { App } from "./views/app/index.tsx";
 import "./index.css";
 import { PodcastDetail } from "./views/podcast-detail/index.tsx";
 import { PodcastList } from "./views/podcast-list/index.tsx";
-import { getPodcasts } from "./views/podcast-list/podcasts.ts";
+import { getPodcasts } from "./views/podcast-list/podcast-cache.ts";
 import {
   EpisodeList,
   getEpisodes,

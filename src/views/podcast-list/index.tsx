@@ -6,7 +6,7 @@ import { PodCast } from "../../types";
 import { PodcastItem } from "./podcast-item-view";
 import { useSearch } from "./hooks/search-util";
 
-import { getPodcasts } from "./podcasts";
+import { getPodcasts } from "./podcast-cache";
 
 export async function podcastsLoader() {
   const data = await getPodcasts();
