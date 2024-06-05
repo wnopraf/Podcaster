@@ -1,6 +1,7 @@
-import { useLoaderData, Link, LoaderFunctionArgs } from "react-router-dom";
-import { cacheApiFetcher } from "../../../lib/cache";
-import { IPodcastDetail } from "../../../types";
+import { Link, Params, useLoaderData } from "react-router-dom";
+
+import { cacheApiFetcher } from "@/lib/cache";
+
 import { podCastDetailCache } from "./episode-list-cache";
 import { millsToMinuteFormat } from "./util";
 
@@ -10,17 +11,18 @@ const makeUrlDetailPodcast = (id: string) => {
   return rootUrl;
 };
 
-export async function getEpisodes({ params }: LoaderFunctionArgs<"podcastId">) {
-  const podcastUrl = makeUrlDetailPodcast(params.podcastId as string);
-  podCastDetailCache.setCache(params.podcastId as string, podcastUrl);
-  const data = await cacheApiFetcher<IPodcastDetail>(
-    params.podcastId as string,
+export async function getEpisodes({ params }: { params: Params<"podcastId"> }) {
+  if (!params.podcastId) return;
+  const podcastUrl = makeUrlDetailPodcast(params.podcastId);
+  podCastDetailCache.setCache(params.podcastId, podcastUrl);
+  const data = await cacheApiFetcher<Podcaster.PodcastDetail>(
+    params.podcastId,
     podCastDetailCache
   );
   return data;
 }
 export function EpisodeList() {
-  const data = useLoaderData() as IPodcastDetail;
+  const data = useLoaderData() as Podcaster.PodcastDetail;
 
   return (
     <>
@@ -30,8 +32,8 @@ export function EpisodeList() {
         </h1>
       </header>
       <div className="px-4 pb-4 shadow shadow-gray-500">
-        <table className=" w-full mt-10 p-1  ">
-          <thead className=" hidden px-2 sm:grid grid-cols-1 justify-items-center gap-x-2 pt-8 pb-2 sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start ">
+        <table className=" mt-10 w-full p-1  ">
+          <thead className=" hidden grid-cols-1 justify-items-center gap-x-2 px-2 pb-2 pt-8 sm:grid sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start ">
             <th className=" text-left">Title</th>
             <th className="  text-left">Date</th>
             <th className="  text-left">Duration</th>
@@ -44,15 +46,15 @@ export function EpisodeList() {
                   /* auto-rows-[50px] */
                   <tr
                     key={elm.trackId}
-                    className=" px-2 grid grid-cols-1 justify-items-center gap-x-2 py-1 items-center even:bg-gray-100 border-t-2 border-b-2 border-gray-200 sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start  "
+                    className=" grid grid-cols-1 items-center justify-items-center gap-x-2 border-y-2 border-gray-200 px-2 py-1 even:bg-gray-100 sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start  "
                   >
-                    <td className=" w-full flex justify-between text-blue-500  line-clamp-2 md:flex-none  ">
-                      <span className="  text-black font-semibold capitalize sm:hidden">
+                    <td className=" line-clamp-2 flex w-full justify-between  text-blue-500 md:flex-none  ">
+                      <span className="  font-semibold capitalize text-black sm:hidden">
                         title
                       </span>
                       {
                         <Link
-                          className=" text-right line-clamp-2 sm:text-left"
+                          className=" line-clamp-2 text-right sm:text-left"
                           to={`episode/${elm.trackId}`}
                           title={elm.trackName}
                         >
@@ -60,13 +62,13 @@ export function EpisodeList() {
                         </Link>
                       }
                     </td>
-                    <td className="w-full flex gap-x-4  justify-between text-gray-600 line-clamp-2 md:flex-none  ">
+                    <td className="line-clamp-2 flex w-full  justify-between gap-x-4 text-gray-600 md:flex-none  ">
                       <span className=" font-semibold capitalize sm:hidden">
                         date
                       </span>{" "}
                       {new Date(elm.releaseDate).toLocaleDateString()}
                     </td>
-                    <td className="w-full flex gap-x-4 justify-between text-gray-600 line-clamp-2 md:flex-none  md:gap-x-0">
+                    <td className="line-clamp-2 flex w-full justify-between gap-x-4 text-gray-600 md:flex-none  md:gap-x-0">
                       <span className=" font-semibold capitalize sm:hidden">
                         duration
                       </span>{" "}

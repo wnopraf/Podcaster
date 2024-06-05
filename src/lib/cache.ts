@@ -48,7 +48,10 @@ export class Cache<T> implements ICache<T> {
   }
 }
 
-export async function cacheApiFetcher<T>(id: string, cache: Cache<T>) {
+export async function cacheApiFetcher<T>(
+  id: string,
+  cache: Cache<T>
+): Promise<T | undefined> {
   // init cache
 
   if (cache.isRevalidated(id)) {
@@ -66,5 +69,8 @@ export async function cacheApiFetcher<T>(id: string, cache: Cache<T>) {
       }
     }
   }
-  return cache.getItem(id)?.data;
+  const cacheItem = cache.getItem(id);
+  if (cacheItem !== null) {
+    return cacheItem.data;
+  }
 }

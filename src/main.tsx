@@ -1,17 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { App } from "./views/app/index.tsx";
-import "./index.css";
-import { PodcastDetail } from "./views/podcast-detail/index.tsx";
-import { PodcastList } from "./views/podcast-list/index.tsx";
-import { getPodcasts } from "./views/podcast-list/podcast-cache.ts";
+import { ErrorPage } from "@/components/error-page";
+import { App } from "@/views/app";
+import { PodcastDetail } from "@/views/podcast-detail";
+import { EpisodeDetail } from "@/views/podcast-detail/episode-detail-view";
 import {
   EpisodeList,
   getEpisodes,
-} from "./views/podcast-detail/episode-list-view/episode-list.tsx";
-import { EpisodeDetail } from "./views/podcast-detail/episode-detail-view/index.tsx";
-import { ErrorPage } from "./ui/ErrorPage.tsx";
+} from "@/views/podcast-detail/episode-list-view/episode-list.tsx";
+import { PodcastList } from "@/views/podcast-list";
+import { getPodcasts } from "@/views/podcast-list/podcast-cache.ts";
+
+import "./index.css";
 
 const router = createBrowserRouter([
   {

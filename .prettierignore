@@ -1,0 +1,12 @@
+cache
+.cache
+package.json
+package-lock.json
+public
+CHANGELOG.md
+.pnpm
+dist
+node_modules
+
+build
+.contentlayer

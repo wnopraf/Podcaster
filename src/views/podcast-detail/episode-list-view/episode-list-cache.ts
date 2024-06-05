@@ -1,4 +1,3 @@
-import { Cache } from "../../../lib/cache";
-import { IPodcastDetail } from "../../../types";
+import { Cache } from "@/lib/cache";
 
-export const podCastDetailCache = new Cache<IPodcastDetail>();
+export const podCastDetailCache = new Cache<Podcaster.PodcastDetail>();

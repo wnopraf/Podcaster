@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { PodCast } from "../../../types";
 
-export function useSearch(podcasts: PodCast[] | null) {
+export function useSearch(podcasts: Podcaster.PodCast[] | null) {
   const [search, setSearch] = useState<string>();
 
   let filteredPodcasts = podcasts?.map((elm) => {
@@ -19,8 +18,8 @@ export function useSearch(podcasts: PodCast[] | null) {
     return elm["im:name"].label.includes(search?.toLowerCase() as string);
   });
   filteredPodcasts = [
-    ...(filteredByName as PodCast[]),
-    ...(filterdByAuthor as PodCast[]),
+    ...(filteredByName as Podcaster.PodCast[]),
+    ...(filterdByAuthor as Podcaster.PodCast[]),
   ];
   return {
     setSearch,

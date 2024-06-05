@@ -1,17 +1,16 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { IPodcastDetail } from "../../../types";
 
 export function EpisodeDetail() {
   const { episodeId } = useParams();
-  const data = useLoaderData() as IPodcastDetail;
+  const data = useLoaderData() as Podcaster.PodcastDetail;
   const episode = data.results.find((elm) => {
     return elm.trackId.toString() === episodeId;
   });
 
   return (
-    <div className="text-center lg:text-left  p-5 shadow shadow-gray-500">
+    <div className="p-5 text-center  shadow shadow-gray-500 lg:text-left">
       <div>
-        <h1 className="text-2xl font-semibold mb-5">{episode?.trackName}</h1>
+        <h1 className="mb-5 text-2xl font-semibold">{episode?.trackName}</h1>
         <p
           dangerouslySetInnerHTML={{ __html: episode?.description as string }}
         ></p>

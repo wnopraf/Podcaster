@@ -1,25 +1,23 @@
-import { Outlet, useLoaderData, useParams, Link } from "react-router-dom";
-
-import { PodCast } from "../../types";
+import { Link, Outlet, useLoaderData, useParams } from "react-router-dom";
 
 export function PodcastDetail() {
   const params = useParams();
-  const podcastList = useLoaderData() as PodCast[];
+  const podcastList = useLoaderData() as Podcaster.PodCast[];
   const podcast = podcastList.find((elm) => {
     return elm.id.attributes["im:id"] === params.podcastId;
   });
   return (
-    <div className="flex flex-col gap-y-14 md:gap-x-6 lg:flex-row mt-10 min-h-[75vh]">
-      <aside className=" w-full text-center lg:text-left lg:w-1/3 h-max p-5 shadow shadow-gray-400">
+    <div className="mt-10 flex min-h-[75vh] flex-col gap-y-14 md:gap-x-6 lg:flex-row">
+      <aside className=" h-max w-full p-5 text-center shadow shadow-gray-400 lg:w-1/3 lg:text-left">
         <Link to=".">
-          <div className="w-24 mx-auto">
+          <div className="mx-auto w-24">
             <img
-              className="w-full h-auto"
+              className="h-auto w-full"
               src={podcast?.["im:image"][0].label}
               alt=""
             />
           </div>
-          <div className="mt-8 py-6 border-t border-b border-gray-300">
+          <div className="mt-8 border-y border-gray-300 py-6">
             <h1 className="font-semibold">{podcast?.["im:name"].label}</h1>
             <p className=" italic">
               <span>by</span>
