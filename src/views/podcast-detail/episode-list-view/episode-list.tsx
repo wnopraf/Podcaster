@@ -1,14 +1,16 @@
 import { Link, Params, useLoaderData } from "react-router-dom";
 
+import {
+  PODCAST_DETAIL_QUERY_PARAMS_URL,
+  PODCAST_DETAIL_ROOT_URL,
+} from "@/config/site";
 import { cacheApiFetcher } from "@/lib/cache";
 
 import { podCastDetailCache } from "./episode-list-cache";
 import { millsToMinuteFormat } from "./util";
 
 const makeUrlDetailPodcast = (id: string) => {
-  const rootUrl = `https://itunes.apple.com/lookup?id=${id}&media=podcast
-       &entity=podcastEpisode&limit=20`;
-  return rootUrl;
+  return PODCAST_DETAIL_ROOT_URL + id + PODCAST_DETAIL_QUERY_PARAMS_URL;
 };
 
 export async function getEpisodes({ params }: { params: Params<"podcastId"> }) {
