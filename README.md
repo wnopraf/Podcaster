@@ -1,30 +1,31 @@
-# React + TypeScript + Vite
+# Podcaster app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[React](https://es.react.dev/) based app powered by [vitejs](https://vitejs.dev/) that shows you a bunch of Itunes library podcasts, allowing you to filter by name and listen them in a detail page.
 
-Currently, two official plugins are available:
+The app is built on top of [React-Router](https://reactrouter.com/en/main), and uses basic [React](https://es.react.dev/) state management in order to keep it simple, and [TailwindCSS](https://tailwindcss.com/) for styling.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+File structure is ordered following clean arquitecture patterns, concretly feature pattern arquitecutre where we split the main views following a feature based criteria that keep us away of deps coupling, allowing us scaling up the app with easeness while keeping a clean and easy to follow adding pattern.
 
-## Expanding the ESLint configuration
+## Development
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Requirements:
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js 18
+- [PNPM](https://pnpm.io/) 8
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## How to run it ?
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Main commands:
+
+- `bash pnpm install ` to install respository dependencies
+- `bash pnpm dev` to start developemt server
+- `bash pnpm build:dev` to get a build version without minification and with source maps
+- `bash pnpm build:prod` to get a prod version with asset minification
+
+## Testing
+
+the app uses Vitest as main testing tool and Playwright as e2e framework.
+Basic test setup:
+
+- `bash pnpm test` for unit testing
+- `bash pnpm test:e2e` for end to end testing
