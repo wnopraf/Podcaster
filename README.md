@@ -6,6 +6,8 @@ The app is built on top of [React-Router](https://reactrouter.com/en/main), and 
 
 File structure is ordered following clean arquitecture patterns, concretly feature pattern arquitecutre where we split the main views following a feature based criteria that keep us away of deps coupling, allowing us scaling up the app with easeness while keeping a clean and easy to follow adding pattern.
 
+(Live demo)[https://podcasterapp.netlify.app/]
+
 ## Development
 
 Requirements:
