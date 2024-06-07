@@ -50,7 +50,7 @@ export function EpisodeList() {
                     key={elm.trackId}
                     className=" grid grid-cols-1 items-center justify-items-center gap-x-2 border-y-2 border-gray-200 px-2 py-1 even:bg-gray-100 sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start  "
                   >
-                    <td className=" line-clamp-2 flex w-full justify-between  text-blue-500 md:flex-none  ">
+                    <td className=" line-clamp-2 flex gap-x-3 w-full justify-between  text-blue-500 md:flex-none  ">
                       <span className="  font-semibold capitalize text-black sm:hidden">
                         title
                       </span>

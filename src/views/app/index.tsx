@@ -11,11 +11,15 @@ export function App() {
   const navigation = useNavigation();
   return (
     <div className="container mx-auto px-5 ">
-      <header className="border-b-light-400 flex justify-center  border-b py-6 md:justify-between">
-        <h1 className=" text-4xl text-blue-400 md:text-2xl">
+      <header className=" relative border-b-light-400 flex justify-center items-center  border-b py-6 sm:justify-between">
+        <h1 className="  sm:mr-2 text-4xl text-blue-400 md:text-2xl md:mr-0">
           <Link to="/">Podcaster</Link>
         </h1>
-        {navigation.state === "loading" && <Loader />}
+        {navigation.state === "loading" && (
+          <Loader
+            className={"text-2xl text-blue-300 absolute right-3 animate-pulse"}
+          />
+        )}
       </header>
 
       <Outlet />
