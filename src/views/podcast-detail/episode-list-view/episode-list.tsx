@@ -1,28 +1,7 @@
-import { Link, Params, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
-import {
-  PODCAST_DETAIL_QUERY_PARAMS_URL,
-  PODCAST_DETAIL_ROOT_URL,
-} from "@/config/site";
-import { cacheApiFetcher } from "@/lib/cache";
-
-import { podCastDetailCache } from "./episode-list-cache";
 import { millsToMinuteFormat } from "./util";
 
-const makeUrlDetailPodcast = (id: string) => {
-  return PODCAST_DETAIL_ROOT_URL + id + PODCAST_DETAIL_QUERY_PARAMS_URL;
-};
-
-export async function getEpisodes({ params }: { params: Params<"podcastId"> }) {
-  if (!params.podcastId) return;
-  const podcastUrl = makeUrlDetailPodcast(params.podcastId);
-  podCastDetailCache.setCache(params.podcastId, podcastUrl);
-  const data = await cacheApiFetcher<Podcaster.PodcastDetail>(
-    params.podcastId,
-    podCastDetailCache
-  );
-  return data;
-}
 export function EpisodeList() {
   const data = useLoaderData() as Podcaster.PodcastDetail;
 

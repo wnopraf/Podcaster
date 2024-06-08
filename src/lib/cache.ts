@@ -1,8 +1,9 @@
-interface ICache<T> {
+export interface ICache<T> {
   getItem(id: string): IData<T> | null;
   setItem(id: string, data: T): void;
+  isRevalidated(id: string): boolean;
 }
-interface IData<T> {
+export interface IData<T> {
   data: T;
   lastSaved: number;
   resourceUrl: string;
@@ -16,6 +17,7 @@ export class Cache<T> implements ICache<T> {
     resourceUrl: string,
     deltaCacheMillis: number = 24 * 60 * 60 * 1000
   ) {
+    if (this.getItem(id) !== null) return;
     this.store[id] = {
       data: {} as T,
       resourceUrl,
@@ -35,7 +37,7 @@ export class Cache<T> implements ICache<T> {
     }
   }
   getItem(id: string): IData<T> | null {
-    if (this.store[id] !== null) {
+    if (this.store[id] !== undefined) {
       return this.store[id];
     }
     return null;
@@ -50,7 +52,7 @@ export class Cache<T> implements ICache<T> {
 
 export async function cacheApiFetcher<T>(
   id: string,
-  cache: Cache<T>
+  cache: ICache<T>
 ): Promise<T | undefined> {
   // init cache
 
@@ -61,9 +63,10 @@ export async function cacheApiFetcher<T>(
       try {
         const data = (await fetch(resourceUrl).then((result) =>
           result.json()
-        )) as T;
-        cache.setItem(id, data);
-        return data;
+        )) as { contents: string };
+        const jsonData = JSON.parse(data.contents) as T;
+        cache.setItem(id, jsonData);
+        return jsonData;
       } catch (error) {
         console.log(error);
       }
