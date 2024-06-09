@@ -46,4 +46,11 @@ export class CacheLS<T> implements ICache<T> {
     }
     return false;
   }
+  setLastSaved(id: string, millis: number): void {
+    const storeItem = this.getItem(id);
+    if (storeItem !== null) {
+      storeItem.lastSaved = millis;
+      localStorage.setItem(id, JSON.stringify(storeItem));
+    }
+  }
 }
