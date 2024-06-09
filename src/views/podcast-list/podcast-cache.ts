@@ -1,5 +1,5 @@
 import { PODCAST_LIST_URL } from "@/config/site";
-import { Cache, cacheApiFetcher } from "@/lib/cache";
+import { cacheApiFetcher } from "@/lib/cache";
 import { CacheLS } from "@/lib/local-storagae-cache";
 
 const podcastsCache = new CacheLS<Podcaster.PodCastApi>();

@@ -4,7 +4,7 @@ import {
   PODCAST_DETAIL_QUERY_PARAMS_URL,
   PODCAST_DETAIL_ROOT_URL,
 } from "@/config/site";
-import { Cache, cacheApiFetcher } from "@/lib/cache";
+import { cacheApiFetcher } from "@/lib/cache";
 import { CacheLS } from "@/lib/local-storagae-cache";
 
 export const podCastDetailCache = new CacheLS<Podcaster.PodcastDetail>();
