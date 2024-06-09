@@ -22,11 +22,11 @@ export function PodcastList() {
       />
       {/* auto-rows-[150px] to keep item height controled */}
       {filteredPodcasts.current.length === 0 && (
-        <div className=" h-vh mt-12 text-center text-3xl text-gray-400 sm:text-6xl ">
-          No Podcasts found
+        <div className=" h-vh mt-12 text-center capitalize text-3xl text-gray-400 sm:text-6xl ">
+          no podcasts found
         </div>
       )}
-      <div className=" mt-32 grid grid-cols-1 justify-items-center gap-x-12 gap-y-32 *:h-max sm:grid-cols-2 sm:justify-items-stretch lg:grid-cols-4 ">
+      <div className=" mt-32 grid grid-cols-1  gap-x-12 gap-y-32 *:h-max sm:grid-cols-2 sm:justify-items-stretch lg:grid-cols-4 ">
         {/* <div className=" mt-[8rem] p-7 flex flex-wrap *:w-1/5 gap-x-[1rem] gap-y-[5rem] justify-evenly *:h-max"> */}
         {filteredPodcasts?.current.map((elm) => {
           return (
