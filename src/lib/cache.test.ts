@@ -1,4 +1,4 @@
-import { flushSync } from "react-dom";
+// @ts-nocheck
 import casual from "casual";
 import { beforeAll, describe, expect, it } from "vitest";
 
