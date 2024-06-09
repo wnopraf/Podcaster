@@ -5,7 +5,7 @@ import {
   PODCAST_DETAIL_ROOT_URL,
 } from "@/config/site";
 import { cacheApiFetcher } from "@/lib/cache";
-import { CacheLS } from "@/lib/local-storagae-cache";
+import { CacheLS } from "@/lib/local-storage-cache";
 
 const podCastDetailCache = new CacheLS<Podcaster.PodcastDetail>();
 const makeUrlDetailPodcast = (id: string) => {

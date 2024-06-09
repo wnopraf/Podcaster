@@ -12,6 +12,7 @@ export function PodcastItem({ title, author, imgUrl, podcastId }: PodcastItem) {
     <Link
       to={`podcast/${podcastId}`}
       className=" p-3 shadow-md shadow-gray-400"
+      id={podcastId}
     >
       <div className="mx-auto  mt-[calc(-25%)] w-1/2">
         <img

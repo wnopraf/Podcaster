@@ -2,7 +2,7 @@ export interface ICache<T> {
   getItem(id: string): IData<T> | null;
   setItem(id: string, data: T): void;
   isRevalidated(id: string): boolean;
-  setCacheMillis?(id: string, millis: number): void;
+  setLastSaved?(id: string, millis: number): void;
 }
 export interface IData<T> {
   data: T;
@@ -37,7 +37,7 @@ export class Cache<T> implements ICache<T> {
       };
     }
   }
-  setCacheMillis(id: string, millis: number): void {
+  setLastSaved(id: string, millis: number): void {
     const store = this.getItem(id);
     if (store !== null) {
       this.store[id].lastSaved = millis;

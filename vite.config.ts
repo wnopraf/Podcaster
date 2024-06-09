@@ -1,11 +1,14 @@
-import path from "path"; // @ts-expect-error no type deps
-import react from "@vitejs/plugin-react"; // @ts-expect-error no types deps
+import path from "path";
+import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 import tailwindcss from "tailwindcss";
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    host: true,
+  },
   css: {
     postcss: {
       plugins: [tailwindcss()],
