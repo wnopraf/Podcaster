@@ -14,11 +14,14 @@ export function EpisodeList() {
       </header>
       <div className="px-4 pb-4 shadow shadow-gray-500">
         <table className=" mt-10 w-full p-1  ">
-          <thead className=" hidden grid-cols-1 justify-items-center gap-x-2 px-2 pb-2 pt-8 sm:grid sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start ">
-            <th className=" text-left">Title</th>
-            <th className="  text-left">Date</th>
-            <th className="  text-left">Duration</th>
+          <thead>
+            <tr className=" hidden grid-cols-1 justify-items-center gap-x-2 px-2 pb-2 pt-8 sm:grid sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start ">
+              <th className=" text-left">Title</th>
+              <th className="  text-left">Date</th>
+              <th className="  text-left">Duration</th>
+            </tr>
           </thead>
+
           <tbody>
             {data.results
               .filter((elm) => elm.kind === "podcast-episode")

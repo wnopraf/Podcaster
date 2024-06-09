@@ -36,6 +36,7 @@ export function PodcastList() {
               author={elm["im:artist"].label}
               imgUrl={elm["im:image"][0].label}
               podcastId={elm.id.attributes["im:id"]}
+              key={elm.id.attributes["im:id"]}
             />
           );
         })}
