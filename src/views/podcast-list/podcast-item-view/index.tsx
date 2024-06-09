@@ -21,9 +21,9 @@ export function PodcastItem({ title, author, imgUrl, podcastId }: PodcastItem) {
         />
       </div>
       <div className="mt-3 text-center">
-        <h4 className="line-clamp-2 capitalize" title={title}>
+        <h2 className="line-clamp-2 capitalize" title={title}>
           {title}
-        </h4>
+        </h2>
         <span className="mt-1 line-clamp-1 block text-gray-500" title={author}>
           Author:&nbsp;{author}
         </span>

@@ -10,11 +10,11 @@ export const PodcastSearch: React.FunctionComponent<{
   }, [value, setSearch]);
   return (
     <div className=" mt-5 flex flex-col gap-y-3 justify-center items-center sm:flex-row sm:justify-end">
-      <span className="mr-4 rounded-sm bg-blue-300 px-1 text-md sm:text-sm font-bold text-white">
+      <span className="mr-4 rounded-sm bg-blue-400 px-1 text-md sm:text-sm font-bold text-white">
         {filterResults}
       </span>
       <input
-        className=" border-light-500 h-9 w-full  sm:w-60 sm:h-8 rounded-sm border indent-2 focus:outline-blue-300"
+        className=" border-light-500 h-9 w-full  sm:w-60 sm:h-8 rounded-sm border indent-2 focus:outline-blue-400"
         type="text"
         value={value}
         onChange={(event) => {
