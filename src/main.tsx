@@ -7,11 +7,11 @@ import { PodcastDetail } from "@/views/podcast-detail";
 import { EpisodeDetail } from "@/views/podcast-detail/episode-detail-view";
 import { EpisodeList } from "@/views/podcast-detail/episode-list-view/episode-list.tsx";
 import { PodcastList } from "@/views/podcast-list";
-import { getPodcasts } from "@/views/podcast-list/podcast-cache.ts";
+import { getPodcasts } from "@/views/podcast-list/podcast-loader";
 
 import "./index.css";
 
-import { getEpisodes } from "./views/podcast-detail/episode-list-view/episode-list-cache";
+import { getEpisodes } from "./views/podcast-detail/episode-list-view/episode-list-loader";
 
 const router = createBrowserRouter([
   {

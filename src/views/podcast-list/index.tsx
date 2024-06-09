@@ -3,13 +3,8 @@ import { useLoaderData } from "react-router-dom";
 
 import { PodcastSearch } from "./components/podcast-search";
 import { useSearch } from "./hooks/search-util";
-import { getPodcasts } from "./podcast-cache";
 import { PodcastItem } from "./podcast-item-view";
 
-export async function podcastsLoader() {
-  const data = await getPodcasts();
-  return data;
-}
 export function PodcastList() {
   const data = useLoaderData() as Podcaster.PodCast[];
   const { filteredPodcasts, setSearch } = useSearch(data);

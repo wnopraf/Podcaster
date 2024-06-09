@@ -7,7 +7,7 @@ import {
 import { cacheApiFetcher } from "@/lib/cache";
 import { CacheLS } from "@/lib/local-storagae-cache";
 
-export const podCastDetailCache = new CacheLS<Podcaster.PodcastDetail>();
+const podCastDetailCache = new CacheLS<Podcaster.PodcastDetail>();
 const makeUrlDetailPodcast = (id: string) => {
   return (
     PODCAST_DETAIL_ROOT_URL +
