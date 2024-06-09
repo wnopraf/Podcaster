@@ -1,10 +1,9 @@
-// @ts-nocheck
 import casual from "casual";
 import { beforeAll, describe, expect, it } from "vitest";
 
 import { Cache } from "@/lib/cache";
 
-let podcastCache = new Cache();
+const podcastCache = new Cache();
 beforeAll(() => {
   podcastCache.setCache("podcasts", "randomresource", 30 * 1000);
 });
@@ -42,14 +41,15 @@ casual.define("podcast", () => {
   };
 });
 function generateRandomPodcasts(podcastLenght = 3) {
+  // @ts-expect-error no library ts support
   const podcasts = new Array(podcastLenght).fill(casual.podcast);
   return podcasts;
 }
 
-function timeoutPromise(timeout: number) {
+/* function timeoutPromise(timeout: number) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(null);
     }, timeout);
   });
-}
+} */

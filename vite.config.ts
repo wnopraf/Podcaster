@@ -1,6 +1,5 @@
-// @ts-nocheck
-import path from "path";
-import react from "@vitejs/plugin-react";
+import path from "path"; // @ts-expect-error no type deps
+import react from "@vitejs/plugin-react"; // @ts-expect-error no types deps
 import { defineConfig } from "vite";
 
 import tailwindcss from "tailwindcss";
