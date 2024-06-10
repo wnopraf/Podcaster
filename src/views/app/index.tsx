@@ -1,13 +1,12 @@
-import React, { Dispatch } from "react";
-import { Link, Outlet, useLoaderData, useNavigation } from "react-router-dom";
+import React from "react";
+import { Link, Outlet, useNavigation } from "react-router-dom";
 import { Loader } from "@/components/Loader";
+import { SkeletonUi } from "@/components/skeleton";
 
-export const GlobalContext = React.createContext<{
-  setIsLoading: Dispatch<boolean>;
-  isLoading: boolean;
-} | null>(null);
-
-export function App() {
+interface Props {
+  isfallBack?: boolean;
+}
+export function App({ isfallBack }: Props) {
   const navigation = useNavigation();
 
   return (
@@ -23,7 +22,7 @@ export function App() {
         )}
       </header>
       <div className="min-h-[80vh]">
-        <Outlet />
+        {isfallBack ? <SkeletonUi /> : <Outlet />}
       </div>
 
       <footer className=" mt-6 flex items-center justify-center bg-blue-400  py-5 text-center font-bold text-white lg:py-8">

@@ -40,10 +40,6 @@ const router = createBrowserRouter([
             element: <EpisodeDetail />,
             loader: getEpisodes,
           },
-          {
-            path: "hola",
-            element: <div>hola</div>,
-          },
         ],
       },
     ],
@@ -52,6 +48,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} fallbackElement={<App />} />
+    <RouterProvider router={router} fallbackElement={<App isfallBack />} />
   </React.StrictMode>
 );
