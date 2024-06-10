@@ -1,4 +1,4 @@
-export const millsToMinuteFormat = (mills: number) => {
+export const millsToMinuteFormat = (mills?: number) => {
   if (!mills) return "00:00";
 
   let seconds: number | undefined = mills / 1000;
