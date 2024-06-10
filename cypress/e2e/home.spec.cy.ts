@@ -1,4 +1,4 @@
-describe("template spec", () => {
+describe("podcaster app", () => {
   it("should load podcasts", () => {
     cy.intercept({ url: /.toppodcasts./ }).as("podcastList");
     //cy.intercept("*/lookup/*").as("episodeList");

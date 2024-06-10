@@ -21,6 +21,7 @@ export const PodcastSearch: React.FunctionComponent<{
           setValue(event.target.value);
         }}
         placeholder="Filter podcasts..."
+        aria-label="search"
       />
     </div>
   );
