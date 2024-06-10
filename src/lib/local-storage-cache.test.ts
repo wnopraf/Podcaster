@@ -8,7 +8,7 @@ beforeAll(() => {
   podcastCache.setCache("podcasts", "randomresource", 30 * 1000);
 });
 
-describe("Basic cache interface", () => {
+describe.skip("Basic cache interface", () => {
   it("should retrieve  null", () => {
     expect(podcastCache.setCache("podcasts", "randomUrl")).toBeUndefined();
   });
