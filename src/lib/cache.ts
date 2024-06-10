@@ -82,5 +82,9 @@ export async function cacheApiFetcher<T>(
   const cacheItem = cache.getItem(id);
   if (cacheItem !== null) {
     return cacheItem.data;
+  } else {
+    // deliberated guard against localstorage removal
+    // todo reset cache lifecycle
+    location.reload();
   }
 }
