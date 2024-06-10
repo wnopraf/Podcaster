@@ -5,9 +5,9 @@ import { ErrorPage } from "@/components/error-page";
 import { App } from "@/views/app";
 import { PodcastDetail } from "@/views/podcast-detail";
 import { EpisodeDetail } from "@/views/podcast-detail/episode-detail-view";
-import { EpisodeList } from "@/views/podcast-detail/episode-list-view/episode-list.tsx";
+import { EpisodeList } from "@/views/podcast-detail/episode-list-view/";
 import { PodcastList } from "@/views/podcast-list";
-import { getPodcasts } from "@/views/podcast-list/podcast-loader";
+import { getPodcasts } from "@/views/podcast-list/podcast-list-loader";
 
 import "./index.css";
 
