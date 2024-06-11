@@ -11,7 +11,7 @@ export function SkeletonUi() {
         <input className=" rounded-sm border-2" type="text" />
       </div>
       <div className=" mt-32 grid grid-cols-1  gap-x-12 gap-y-32  sm:grid-cols-2 sm:justify-items-stretch lg:grid-cols-4 ">
-        {skeletonData.map((elm, index) => {
+        {skeletonData.map((_, index) => {
           return <SkeletonItem key={index} />;
         })}
       </div>
