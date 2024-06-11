@@ -9,7 +9,7 @@ describe("Duration podcast format", () => {
   const twelveH10S = (12 * 60 + 10) * 1000; // 12:10
   const nineteenH0M4S = (19 * 60 * 60 + 4) * 1000; // 19:00:04
 
-  it("should do format podcast duration the right way", () => {
+  it("should format podcast duration the right way", () => {
     expect(millsToMinuteFormat(undefined)).toBe("00:00");
     expect(millsToMinuteFormat(hourQuarter)).toBe("01:15:00");
     expect(millsToMinuteFormat(threeH50M20s)).toBe("03:50:20");
