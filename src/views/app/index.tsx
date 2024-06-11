@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet, useNavigation } from "react-router-dom";
-import { Loader } from "@/components/Loader";
+import { Loader } from "@/components/loader";
 import { SkeletonUi } from "@/components/skeleton";
 
 interface Props {
