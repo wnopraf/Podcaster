@@ -17,12 +17,12 @@ export function PodcastList() {
       />
       {/* auto-rows-[150px] to keep item height controled */}
       {filteredPodcasts.current.length === 0 && (
-        <div
+        <p
           id="no-podcasts"
-          className=" h-vh mt-12 text-center text-3xl capitalize text-gray-400 sm:text-6xl "
+          className=" h-vh mt-20 text-center text-4xl capitalize text-gray-400 font-medium sm:text-5xl lg:text-6xl "
         >
           no podcasts found
-        </div>
+        </p>
       )}
       <div
         id="podcast-list"

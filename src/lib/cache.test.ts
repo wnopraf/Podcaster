@@ -9,7 +9,7 @@ beforeAll(() => {
 });
 
 describe("Basic cache interface", () => {
-  it("should retrieve  null", () => {
+  it("should retrieve  undefined", () => {
     expect(podcastCache.setCache("podcasts", "randomUrl")).toBeUndefined();
   });
   it("should get item cache", () => {
@@ -18,9 +18,6 @@ describe("Basic cache interface", () => {
   it("should have setted cache item", () => {
     podcastCache.setItem("podcasts", generateRandomPodcasts());
     expect(podcastCache.getItem("podcasts")?.data).toBeInstanceOf(Array);
-  });
-  it("should not be revalidated", () => {
-    expect(podcastCache.isRevalidated("podcasts")).toBe(false);
   });
 
   it("should not be revalidated before timeout", () => {
