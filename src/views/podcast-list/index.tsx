@@ -19,7 +19,7 @@ export function PodcastList() {
       {filteredPodcasts.current.length === 0 && (
         <p
           id="no-podcasts"
-          className=" h-vh mt-20 text-center text-4xl capitalize text-gray-400 font-medium sm:text-5xl lg:text-6xl "
+          className=" h-vh mt-20 text-center text-4xl font-medium capitalize text-gray-400 sm:text-5xl lg:text-6xl "
         >
           no podcasts found
         </p>
