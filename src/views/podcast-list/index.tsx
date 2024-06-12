@@ -34,7 +34,7 @@ export function PodcastList() {
             <PodcastItem
               title={elm["im:name"].label}
               author={elm["im:artist"].label}
-              imgUrl={elm["im:image"][0].label}
+              imgUrl={elm["im:image"][2].label}
               podcastId={elm.id.attributes["im:id"]}
               key={elm.id.attributes["im:id"]}
             />

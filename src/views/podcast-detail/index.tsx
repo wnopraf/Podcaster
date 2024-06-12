@@ -10,10 +10,10 @@ export function PodcastDetail() {
     <div className="mt-7 flex min-h-[75vh] flex-col gap-y-14 md:gap-x-6 lg:flex-row">
       <aside className=" h-max w-full p-5 text-center shadow shadow-gray-400 lg:w-1/3 lg:text-left">
         <Link to=".">
-          <div className="mx-auto w-24">
+          <div className="mx-auto w-[50%]">
             <img
               className="h-auto w-full"
-              src={podcast?.["im:image"][0].label}
+              src={podcast?.["im:image"][2].label}
               alt=""
             />
           </div>
