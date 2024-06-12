@@ -10,7 +10,7 @@ export function PodcastList() {
   const { filteredPodcasts, setSearch } = useSearch(data);
 
   return (
-    <div className="min-h-[75vh]">
+    <div className="min-h-[75vh] mx-auto max-w-[400px] sm:max-w-[800px] lg:max-w-full">
       <PodcastSearch
         setSearch={setSearch}
         filterResults={filteredPodcasts?.current.length}
@@ -26,7 +26,7 @@ export function PodcastList() {
       )}
       <div
         id="podcast-list"
-        className=" mt-32 grid grid-cols-1  gap-x-12 gap-y-32 *:h-max sm:grid-cols-2 sm:justify-items-stretch lg:grid-cols-4 "
+        className=" mt-32 grid grid-cols-1  gap-x-12 gap-y-40 *:h-max sm:grid-cols-2 sm:justify-items-stretch lg:grid-cols-4 "
       >
         {/* <div className=" mt-[8rem] p-7 flex flex-wrap *:w-1/5 gap-x-[1rem] gap-y-[5rem] justify-evenly *:h-max"> */}
         {filteredPodcasts?.current.map((elm) => {

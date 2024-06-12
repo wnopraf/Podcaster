@@ -7,10 +7,10 @@ export function PodcastDetail() {
     return elm.id.attributes["im:id"] === params.podcastId;
   });
   return (
-    <div className="mt-7 flex min-h-[75vh] flex-col gap-y-14 md:gap-x-6 lg:flex-row">
+    <div className="mx-auto mt-7 flex min-h-[75vh] max-w-[800px] flex-col gap-y-14 md:gap-x-6 lg:max-w-full lg:flex-row">
       <aside className=" h-max w-full p-5 text-center shadow shadow-gray-400 lg:w-1/3 lg:text-left">
         <Link to=".">
-          <div className="mx-auto w-[50%]">
+          <div className="mx-auto w-1/2">
             <img
               className="h-auto w-full"
               src={podcast?.["im:image"][2].label}
