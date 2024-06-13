@@ -11,9 +11,11 @@ import { getPodcasts } from "@/views/podcast-list/podcast-list-loader";
 
 import "./index.css";
 
+import { SkeletonUi } from "./components/skeleton";
 import { getEpisodes } from "./views/podcast-detail/episode-list-view/episode-list-loader";
 
 const router = createBrowserRouter([
+  { path: "/skeleton", element: <SkeletonUi /> },
   {
     path: "/",
     element: <App />,
