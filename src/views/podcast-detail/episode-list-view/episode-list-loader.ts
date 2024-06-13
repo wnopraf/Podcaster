@@ -4,10 +4,13 @@ import {
   PODCAST_DETAIL_QUERY_PARAMS_URL,
   PODCAST_DETAIL_ROOT_URL,
 } from "@/config/site";
-import { cacheApiFetcher } from "@/lib/cache";
+import { Cache, cacheApiFetcher } from "@/lib/cache";
 import { CacheLS } from "@/lib/local-storage-cache";
 
-const podCastDetailCache = new CacheLS<Podcaster.PodcastDetail>();
+const podCastDetailCache =
+  import.meta.env.VITE_MEMCACHE === "1"
+    ? new Cache<Podcaster.PodcastDetail>()
+    : new CacheLS<Podcaster.PodcastDetail>();
 const makeUrlDetailPodcast = (id: string) => {
   return (
     PODCAST_DETAIL_ROOT_URL +

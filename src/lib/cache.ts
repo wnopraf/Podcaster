@@ -1,4 +1,5 @@
 export interface ICache<T> {
+  setCache(id: string, resourceUrl: string, deltaCacheMillis: number): void;
   getItem(id: string): IData<T> | null;
   setItem(id: string, data: T): void;
   isRevalidated(id: string): boolean;
