@@ -29,7 +29,8 @@
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "vite.config.ts",
-    "./cypress/**/*.tsx"
+    "./cypress/**/*.tsx",
+    "./cypress/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

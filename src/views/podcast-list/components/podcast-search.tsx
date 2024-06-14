@@ -9,7 +9,7 @@ export const PodcastSearch: React.FunctionComponent<{
     setSearch(value as string);
   }, [value, setSearch]);
   return (
-    <div className=" mt-5 max-w-[400px] mx-auto flex flex-col items-center justify-center gap-y-3 sm:max-w-full sm:flex-row sm:justify-end">
+    <div className=" mx-auto mt-5 flex max-w-[400px] flex-col items-center justify-center gap-y-3 sm:max-w-full sm:flex-row sm:justify-end">
       <span className="text-md mr-4 rounded-md bg-blue-500 px-1 font-bold text-white sm:text-sm">
         {filterResults}
       </span>

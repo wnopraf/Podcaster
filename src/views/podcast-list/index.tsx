@@ -14,7 +14,7 @@ export function PodcastSearchData({ data }: { data: Podcaster.PodCast[] }) {
   const { filteredPodcasts, setSearch } = useSearch(data);
 
   return (
-    <div className="min-h-[75vh] mx-auto max-w-[400px] sm:max-w-[800px] lg:max-w-full">
+    <div className="mx-auto min-h-[75vh] max-w-[400px] sm:max-w-[800px] lg:max-w-full">
       <PodcastSearch
         setSearch={setSearch}
         filterResults={filteredPodcasts?.current.length}

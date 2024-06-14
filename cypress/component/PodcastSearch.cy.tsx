@@ -1,5 +1,6 @@
-import { PodcastSearch } from "@/views/podcast-list/components/podcast-search";
-import { useSearch } from "@/views/podcast-list/hooks/search-util";
+import { BrowserRouter } from "react-router-dom";
+import { PodcastSearchData } from "@/views/podcast-list/";
+import { filterCriteria } from "@/views/podcast-list/hooks/search-util";
 
 import podcastsJson from "../fixtures/podcast.json";
 
@@ -9,56 +10,19 @@ describe("PodcastSearch", () => {
   criteriaChars.forEach((elm) => {
     const searchByCriteria = filterCriteria(elm, podcasts.feed.entry);
     it(`it should flter by ${elm}`, () => {
-      // @ts-expect-error mount type hurts
-      cy.mount(<PodcastSearchMock data={podcasts.feed.entry} />);
+      // @ts-expect-error ts no recognize cypress types
+      cy.mount(
+        <BrowserRouter>
+          <PodcastSearchData data={podcasts.feed.entry} />
+        </BrowserRouter>
+      );
       cy.get("input").type(elm);
       cy.get("span").contains(searchByCriteria.length);
 
-      cy.get("li").should("have.length", searchByCriteria.length);
+      cy.get("a").should("have.length", searchByCriteria.length);
       if (searchByCriteria.length === 0) {
-        cy.get("p").contains("No podcasts found");
+        cy.get("p").contains("no podcasts found");
       }
     });
   });
 });
-
-function PodcastSearchMock({ data }: { data: Podcaster.PodCast[] }) {
-  const { filteredPodcasts, setSearch } = useSearch(data);
-
-  return (
-    <div>
-      <PodcastSearch
-        setSearch={setSearch}
-        filterResults={filteredPodcasts.current.length}
-      />
-      {filteredPodcasts.current.length === 0 && <p>No podcasts found</p>}
-      <ul>
-        {filteredPodcasts.current.map((elm) => {
-          return (
-            <li>
-              <p>{elm["im:artist"].label}</p>
-              <p>{elm["im:name"].label}</p>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
-
-function filterCriteria(criteria: string, podcasts: Podcaster.PodCast[]) {
-  const podcastsToUpperCase = podcasts.map((elm) => ({
-    ["im:artist"]: elm["im:artist"].label.toLowerCase(),
-    ["im:name"]: elm["im:name"].label.toLowerCase(),
-  }));
-  const author = podcastsToUpperCase.filter((elm) => {
-    return elm["im:artist"].includes(criteria);
-  });
-  const podcastName = podcastsToUpperCase.filter((elm) => {
-    if (author.includes(elm)) {
-      return false;
-    }
-    return elm["im:name"].includes(criteria);
-  });
-  return [...podcastName, ...author];
-}

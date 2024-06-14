@@ -22,9 +22,9 @@ export function SkeletonUi() {
 const SkeletonItem = () => {
   return (
     <div className=" relative flex   animate-pulse flex-col items-center justify-center p-3 shadow-md shadow-gray-400">
-      <div className=" -translate-y-1/2 size-[160px] lg:size-[120px] rounded-full bg-slate-300" />
+      <div className=" size-[160px] -translate-y-1/2 rounded-full bg-slate-300 lg:size-[120px]" />
 
-      <h2 className=" mt-[-4rem] lg:mt-[-3rem] h-[24px] w-1/3 rounded-xl  bg-slate-300"></h2>
+      <h2 className=" -mt-16 h-[24px] w-1/3 rounded-xl bg-slate-300  lg:-mt-12"></h2>
       <span className="mt-1 h-[24px] w-1/2  rounded-xl bg-slate-300"></span>
     </div>
   );

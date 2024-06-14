@@ -14,6 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+
 import "./commands";
 
 // Alternatively you can use CommonJS syntax:
@@ -25,7 +26,7 @@ import { mount } from "cypress/react18";
 // your custom command.
 // Alternatively, can be defined in cypress/support/component.d.ts
 // with a <reference path="./component" /> at the top of your spec.
-
+// @ts-expect-error ts no recognize cypress types
 Cypress.Commands.add("mount", mount);
 
 // Example use:
