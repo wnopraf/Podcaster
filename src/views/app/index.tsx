@@ -10,9 +10,9 @@ export function App({ isfallBack }: Props) {
   const navigation = useNavigation();
 
   return (
-    <div className="container mx-auto max-w-[600px] px-5 sm:max-w-full  lg:max-w-[1200px]">
-      <header className=" border-b-light-400 relative mx-auto  flex max-w-[400px] items-center justify-center  border-b pb-4 pt-6 sm:max-w-[800px] sm:justify-between lg:max-w-full">
-        <h1 className="  text-4xl font-semibold text-blue-500 sm:mr-2 md:mr-0 md:text-2xl">
+    <div className="container mx-auto px-5 sm:max-w-full  lg:max-w-[1200px]">
+      <header className=" border-b-light-400 relative mx-auto  flex  items-center justify-center  border-b pb-4 pt-6  sm:justify-between lg:max-w-full">
+        <h1 className="  text-4xl font-semibold text-blue-500 sm:mr-2 md:mr-0 lg:text-2xl">
           <Link to="/">Podcaster</Link>
         </h1>
         {navigation.state === "loading" && (

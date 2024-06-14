@@ -14,7 +14,7 @@ export function PodcastSearchData({ data }: { data: Podcaster.PodCast[] }) {
   const { filteredPodcasts, setSearch } = useSearch(data);
 
   return (
-    <div className="mx-auto min-h-[75vh] max-w-[400px] sm:max-w-[800px] lg:max-w-full">
+    <div className="mx-auto min-h-[75vh]  lg:max-w-full">
       <PodcastSearch
         setSearch={setSearch}
         filterResults={filteredPodcasts?.current.length}
@@ -30,7 +30,7 @@ export function PodcastSearchData({ data }: { data: Podcaster.PodCast[] }) {
       )}
       <div
         id="podcast-list"
-        className=" mt-32 grid grid-cols-1  gap-x-12 gap-y-40 *:h-max sm:grid-cols-2 sm:justify-items-stretch lg:grid-cols-4 "
+        className=" mt-[30vw] grid grid-cols-1  gap-x-6 gap-y-[40vw] *:h-max sm:mt-[15vw] sm:grid-cols-2 sm:justify-items-stretch sm:gap-y-[20vw] lg:mt-[8vw] lg:grid-cols-4 lg:gap-y-[12vw] xl:gap-y-[10rem] xl:mt-20  "
       >
         {/* <div className=" mt-[8rem] p-7 flex flex-wrap *:w-1/5 gap-x-[1rem] gap-y-[5rem] justify-evenly *:h-max"> */}
         {filteredPodcasts?.current.map((elm) => {
