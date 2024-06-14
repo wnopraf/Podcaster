@@ -7,6 +7,10 @@ import { PodcastItem } from "./podcast-item-view";
 
 export function PodcastList() {
   const data = useLoaderData() as Podcaster.PodCast[];
+  return <PodcastSearchData data={data} />;
+}
+
+export function PodcastSearchData({ data }: { data: Podcaster.PodCast[] }) {
   const { filteredPodcasts, setSearch } = useSearch(data);
 
   return (

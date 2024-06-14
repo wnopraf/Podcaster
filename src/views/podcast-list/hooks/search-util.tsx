@@ -11,28 +11,32 @@ export function useSearch(podcasts: Podcaster.PodCast[] | []) {
     };
   }
 
-  filteredPodcasts.current = podcasts?.map((elm) => {
-    elm["im:name"].label = elm["im:name"].label.toLowerCase();
-    elm["im:artist"].label = elm["im:artist"].label.toLowerCase();
-    return elm;
-  });
   if (filteredPodcasts.current !== undefined) {
-    const filterdByAuthor = filteredPodcasts.current.filter((elm) => {
-      return elm["im:artist"].label.includes(search?.toLowerCase() as string);
-    });
-    const filteredByName = filteredPodcasts?.current.filter((elm) => {
-      if (filterdByAuthor?.includes(elm)) {
-        return false;
-      }
-      return elm["im:name"].label.includes(search?.toLowerCase() as string);
-    });
-    filteredPodcasts.current = [
-      ...(filteredByName as Podcaster.PodCast[]),
-      ...(filterdByAuthor as Podcaster.PodCast[]),
-    ];
+    filteredPodcasts.current = filterCriteria(search, podcasts);
   }
   return {
     setSearch,
     filteredPodcasts,
   };
+}
+
+export function filterCriteria(
+  criteria: string,
+  podcasts: Podcaster.PodCast[]
+) {
+  const podcastsToUpperCase = podcasts.map((elm) => {
+    elm["im:name"].label = elm["im:name"].label.toLowerCase();
+    elm["im:artist"].label = elm["im:artist"].label.toLowerCase();
+    return elm;
+  });
+  const authorFilter = podcastsToUpperCase.filter((elm) => {
+    return elm["im:artist"].label.includes(criteria.toLowerCase());
+  });
+  const podcastNameFilter = podcastsToUpperCase.filter((elm) => {
+    if (authorFilter.includes(elm)) {
+      return false;
+    }
+    return elm["im:name"].label.includes(criteria.toLowerCase());
+  });
+  return [...podcastNameFilter, ...authorFilter];
 }
