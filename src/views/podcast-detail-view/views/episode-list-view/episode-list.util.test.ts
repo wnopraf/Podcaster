@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { millsToMinuteFormat } from "./util";
+import { millsToMinuteFormat } from "./episode-list.util";
 
 describe("Duration podcast format", () => {
   const hourQuarter = (60 + 15) * 60 * 1000; // 01:15:00

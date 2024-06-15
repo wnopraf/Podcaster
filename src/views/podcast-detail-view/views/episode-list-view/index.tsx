@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import { millsToMinuteFormat } from "./util";
+import { millsToMinuteFormat } from "./episode-list.util";
 
 export function EpisodeList() {
   const data = useLoaderData() as Podcaster.PodcastDetail;

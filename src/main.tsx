@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { App } from "@/app";
 import { ErrorPage } from "@/components/error-page";
-import { App } from "@/views/app";
-import { PodcastDetail } from "@/views/podcast-detail";
-import { EpisodeDetail } from "@/views/podcast-detail/episode-detail-view";
-import { EpisodeList } from "@/views/podcast-detail/episode-list-view/";
-import { PodcastList } from "@/views/podcast-list";
-import { getPodcasts } from "@/views/podcast-list/podcast-list-loader";
+import { PodcastDetail } from "@/views/podcast-detail-view";
+import { EpisodeDetail } from "@/views/podcast-detail-view/views/episode-detail-view";
+import { EpisodeList } from "@/views/podcast-detail-view/views/episode-list-view";
+import { PodcastList } from "@/views/podcast-list-view";
+import { getPodcasts } from "@/views/podcast-list-view/podcast-list-loader";
 
 import "./index.css";
 
 import { SkeletonUi } from "./components/skeleton";
-import { getEpisodes } from "./views/podcast-detail/episode-list-view/episode-list-loader";
+import { getEpisodes } from "./views/podcast-detail-view/views/episode-list-view/episode-list-loader";
 
 const router = createBrowserRouter([
   { path: "/skeleton", element: <SkeletonUi /> },
