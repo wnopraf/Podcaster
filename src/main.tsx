@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouteObject,
+  RouterProvider,
+} from "react-router-dom";
 import { App } from "@/app";
 import { ErrorPage } from "@/components/error-page";
 import { PodcastDetail } from "@/views/podcast-detail-view";
@@ -14,8 +18,7 @@ import "./index.css";
 import { SkeletonUi } from "./components/skeleton";
 import { getEpisodes } from "./views/podcast-detail-view/views/episode-list-view/episode-list-loader";
 
-const router = createBrowserRouter([
-  { path: "/skeleton", element: <SkeletonUi /> },
+const routes: RouteObject[] = [
   {
     path: "/",
     element: <App />,
@@ -46,7 +49,11 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
+if (import.meta.env.DEV) {
+  routes.push({ path: "/skeleton", element: <SkeletonUi /> });
+}
+const router = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
