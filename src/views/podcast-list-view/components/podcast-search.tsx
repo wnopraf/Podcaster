@@ -14,7 +14,7 @@ export const PodcastSearch: React.FunctionComponent<{
         {filterResults}
       </span>
       <input
-        className=" border-light-500 h-9 w-[90%] rounded-sm border indent-2 shadow-inner focus:outline-blue-400  sm:w-1/2 lg:w-1/3"
+        className=" border-light-500 h-12 w-full rounded-md border indent-2 shadow-inner focus:outline-blue-400  sm:w-1/2 lg:w-1/3"
         type="text"
         value={value}
         onChange={(event) => {
