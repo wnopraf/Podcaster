@@ -29,14 +29,25 @@ export function filterCriteria(
     elm["im:artist"].label = elm["im:artist"].label.toLowerCase();
     return elm;
   });
-  const authorFilter = podcastsToUpperCase.filter((elm) => {
-    return elm["im:artist"].label.includes(criteria.toLowerCase());
-  });
-  const podcastNameFilter = podcastsToUpperCase.filter((elm) => {
-    if (authorFilter.includes(elm)) {
-      return false;
-    }
-    return elm["im:name"].label.includes(criteria.toLowerCase());
-  });
+  const authorFilter = podcastsToUpperCase
+    .filter((elm) => {
+      return elm["im:artist"].label.includes(criteria.toLowerCase());
+    })
+    .toSorted((elmA, elmB) => {
+      return elmA["im:artist"].label.localeCompare(
+        elmB["im:artist"].label,
+        "en"
+      );
+    });
+  const podcastNameFilter = podcastsToUpperCase
+    .filter((elm) => {
+      if (authorFilter.includes(elm)) {
+        return false;
+      }
+      return elm["im:name"].label.includes(criteria.toLowerCase());
+    })
+    .toSorted((elmA, elmB) => {
+      return elmA["im:name"].label.localeCompare(elmB["im:name"].label, "en");
+    });
   return [...podcastNameFilter, ...authorFilter];
 }
