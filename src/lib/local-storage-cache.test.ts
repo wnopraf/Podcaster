@@ -28,7 +28,7 @@ describe.skip("Basic cache interface", () => {
   });
 
   it("should be revalidated after timeout", () => {
-    podcastCache.setLastSaved("podcasts", Date.now() - 2 * 1000);
+    podcastCache.setLastSaved("podcasts", Date.now() - 60 * 1000);
     expect(podcastCache.isRevalidated("podcasts")).toBe(true);
   });
 });

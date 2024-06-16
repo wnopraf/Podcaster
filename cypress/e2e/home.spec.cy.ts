@@ -1,6 +1,6 @@
 describe("podcaster app", () => {
   it("should load podscats list view", () => {
-    cy.intercept({ url: /.toppodcasts./ }).as("podcastList");
+    cy.intercept({ url: /.+toppodcasts.+/ }).as("podcastList");
     //cy.intercept("*/lookup/*").as("episodeList");
     cy.visit("http://localhost:5173/");
     cy.wait(["@podcastList"]);

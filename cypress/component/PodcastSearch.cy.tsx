@@ -10,7 +10,7 @@ describe("PodcastSearch", () => {
   criteriaChars.forEach((elm) => {
     const searchByCriteria = filterCriteria(elm, podcasts.feed.entry);
     it(`it should flter by ${elm}`, () => {
-      // @ts-expect-error ts no recognize cypress types
+      // @ts-expect-error ts no detect some cypress types
       cy.mount(
         <BrowserRouter>
           <PodcastSearchData data={podcasts.feed.entry} />
