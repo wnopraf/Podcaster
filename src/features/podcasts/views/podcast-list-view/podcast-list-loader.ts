@@ -1,14 +1,17 @@
+import { QueryClient } from "@tanstack/react-query";
+
 import { PODCAST_LIST_URL } from "@/config/site";
-import { Cache, cacheApiFetcher } from "@/lib/cache";
-import { CacheLS } from "@/lib/local-storage-cache";
 
-const podcastsCache =
-  import.meta.env.VITE_MEMCACHE === "1"
-    ? new Cache<Podcaster.PodCastApi>()
-    : new CacheLS<Podcaster.PodCastApi>();
-podcastsCache.setCache("podcastList", PODCAST_LIST_URL);
-export async function getPodcasts() {
-  const data = await cacheApiFetcher("podcastList", podcastsCache);
+export function getPodcasts(queryClient: QueryClient) {
+  return async () => {
+    const data = await queryClient.ensureQueryData<Podcaster.PodCastApi>({
+      queryKey: ["podcastList"],
+      queryFn: async () => {
+        const data = await fetch(PODCAST_LIST_URL).then((data) => data.json());
 
-  return data?.feed.entry;
+        return JSON.parse(data.contents);
+      },
+    });
+    return data?.feed.entry;
+  };
 }

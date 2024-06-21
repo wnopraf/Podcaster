@@ -8,10 +8,11 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "prettier",
     "plugin:tailwindcss/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
-  plugins: ["react-refresh", "tailwindcss"],
+  plugins: ["react-refresh", "tailwindcss", "@tanstack/query"],
   rules: {
     "react/jsx-key": "off",
     "tailwindcss/no-custom-classname": "off",

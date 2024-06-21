@@ -18,6 +18,23 @@ import { App } from "./app";
 
 import "./index.css";
 
+import { experimental_createPersister } from "@tanstack/query-persist-client-core";
+import { QueryClient } from "@tanstack/react-query";
+
+
+
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      gcTime: 1000 * 60 * 60 * 24, // 24 hours
+      persister: experimental_createPersister({
+        storage: window.localStorage,
+        maxAge: 1000 * 60 * 60 * 24,
+      }),
+    },
+  },
+});
 const routes: RouteObject[] = [
   {
     path: "/",
@@ -27,23 +44,23 @@ const routes: RouteObject[] = [
       {
         index: true,
         element: <PodcastList />,
-        loader: getPodcasts,
+        loader: getPodcasts(queryClient),
       },
       {
         path: "podcast/:podcastId",
         element: <PodcastDetail />,
-        loader: getPodcasts,
+        loader: getPodcasts(queryClient),
         errorElement: <ErrorPage />,
         children: [
           {
             index: true,
-            loader: getEpisodes,
+            loader: getEpisodes(queryClient),
             element: <EpisodeList />,
           },
           {
             path: "episode/:episodeId",
             element: <EpisodeDetail />,
-            loader: getEpisodes,
+            loader: getEpisodes(queryClient),
           },
         ],
       },
