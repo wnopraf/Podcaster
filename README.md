@@ -8,6 +8,11 @@ File structure is ordered following clean arquitecture patterns, concretly featu
 
 [Live demo](https://podcasterapp.netlify.app/)
 
+## Branchs
+
+- main with custom cache system
+- f/with-react-query with react-query as cache & fetching system
+
 ## Development
 
 Requirements:
