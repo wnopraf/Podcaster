@@ -5,18 +5,18 @@ import {
   RouteObject,
   RouterProvider,
 } from "react-router-dom";
-import { App } from "@/app";
 import { ErrorPage } from "@/components/error-page";
+import { SkeletonUi } from "@/components/skeleton";
 import { PodcastDetail } from "@/views/podcast-detail-view";
 import { EpisodeDetail } from "@/views/podcast-detail-view/views/episode-detail-view";
 import { EpisodeList } from "@/views/podcast-detail-view/views/episode-list-view";
+import { getEpisodes } from "@/views/podcast-detail-view/views/episode-list-view/episode-list-loader";
 import { PodcastList } from "@/views/podcast-list-view";
 import { getPodcasts } from "@/views/podcast-list-view/podcast-list-loader";
 
-import "./index.css";
+import { App } from "./app";
 
-import { SkeletonUi } from "./components/skeleton";
-import { getEpisodes } from "./views/podcast-detail-view/views/episode-list-view/episode-list-loader";
+import "./index.css";
 
 const routes: RouteObject[] = [
   {

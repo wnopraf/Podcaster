@@ -5,8 +5,8 @@ module.exports = {
   trailingComma: "es5",
   importOrder: [
     "^(react(.*)$)|^(react-(.*)$)",
-    "<THIRD_PARTY_MODULES>",
     "^@/components/(.*)$",
+    "<THIRD_PARTY_MODULES>",
     "^@/views/(.*)$",
     "^types$",
     "",
@@ -18,7 +18,6 @@ module.exports = {
     "^@/styles/(.*)$",
     "",
     "^[./]",
-    ".css$",
   ],
   importOrderSeparation: false,
   importOrderSortSpecifiers: true,
