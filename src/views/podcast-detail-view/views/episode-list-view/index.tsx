@@ -16,9 +16,9 @@ export function EpisodeList() {
         <table className=" mt-10 w-full p-1  ">
           <thead>
             <tr className=" hidden grid-cols-1 justify-items-center gap-x-2 px-2 pb-2 pt-8 sm:grid sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start ">
-              <th className=" text-left">Title</th>
-              <th className="  text-left">Date</th>
-              <th className="  text-left">Duration</th>
+              <th>Title</th>
+              <th>Date</th>
+              <th className=" sm:justify-self-center">Duration</th>
             </tr>
           </thead>
 
@@ -52,7 +52,7 @@ export function EpisodeList() {
                       </span>{" "}
                       {new Date(elm.releaseDate).toLocaleDateString()}
                     </td>
-                    <td className="line-clamp-2 flex w-full justify-between gap-x-4 text-gray-600 md:flex-none  md:gap-x-0">
+                    <td className="line-clamp-2 flex w-full justify-between  gap-x-4 text-gray-600 sm:justify-center md:flex-none  md:gap-x-0">
                       <span className=" font-semibold capitalize sm:hidden">
                         duration
                       </span>{" "}
