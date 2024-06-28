@@ -3,12 +3,15 @@ export function SkeletonUi() {
   return (
     <div className="mx-auto max-w-[400px] sm:max-w-[800px] lg:max-w-full">
       <div className=" mt-4 flex animate-pulse flex-col items-center justify-center sm:flex-row sm:justify-between">
-        <span className=" mb-4 flex w-[30px] justify-around gap-y-1 rounded-sm bg-slate-300 p-1 font-semibold  text-white sm:mb-0 sm:ml-auto sm:mr-2">
-          <span className=" h-[10px] w-[2px] bg-white"></span>
-          <span className=" h-[10px] w-[2px] bg-white"></span>
-          <span className=" h-[10px] w-[2px] bg-white"></span>
+        <span className=" mb-4 flex w-[40px] justify-around gap-y-1 rounded-sm bg-slate-300 p-1 font-semibold  text-white sm:mb-0 sm:ml-auto sm:mr-2">
+          <span className=" h-[15px] w-[4px] bg-white"></span>
+          <span className=" h-[15px] w-[4px] bg-white"></span>
+          <span className=" h-[15px] w-[4px] bg-white"></span>
         </span>
-        <input className=" rounded-sm border-2" type="text" />
+        <input
+          className="  border-light-500 h-12 w-full rounded-md border indent-2 shadow-inner focus:outline-blue-400  sm:w-1/2 lg:w-1/3"
+          type="text"
+        />
       </div>
       <div className=" mt-32 grid grid-cols-1  gap-x-12 gap-y-32  sm:grid-cols-2 sm:justify-items-stretch lg:grid-cols-4 ">
         {skeletonData.map((_, index) => {
