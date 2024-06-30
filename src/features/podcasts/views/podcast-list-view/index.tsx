@@ -30,7 +30,7 @@ export function PodcastSearchData({ data }: { data: Podcaster.PodCast[] }) {
       )}
       <div
         id="podcast-list"
-        className=" mt-[30vw] grid grid-cols-1  gap-x-6 gap-y-[40vw] *:h-max sm:mt-[15vw] sm:grid-cols-2 sm:justify-items-stretch sm:gap-y-[20vw] lg:mt-[8vw] lg:grid-cols-4 lg:gap-y-[12vw] xl:mt-20 xl:gap-y-40  "
+        className=" mt-[30vw] grid grid-cols-1 gap-y-[40vw] *:h-max sm:gap-x-16 sm:mt-[15vw] sm:grid-cols-2 sm:justify-items-stretch sm:gap-y-[20vw] lg:gap-x-8 lg:mt-[8vw] lg:grid-cols-4 lg:gap-y-[12vw] xl:mt-20 xl:gap-y-40  "
       >
         {/* <div className=" mt-[8rem] p-7 flex flex-wrap *:w-1/5 gap-x-[1rem] gap-y-[5rem] justify-evenly *:h-max"> */}
         {filteredPodcasts?.current.map((elm) => {

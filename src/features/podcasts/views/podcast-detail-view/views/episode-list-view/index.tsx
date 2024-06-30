@@ -8,14 +8,14 @@ export function EpisodeList() {
   return (
     <>
       <header className="shadow shadow-gray-400">
-        <h1 className=" p-2 text-2xl font-semibold">
+        <h1 className=" p-3 text-2xl font-semibold">
           Episodes: &nbsp;{data.resultCount}
         </h1>
       </header>
-      <div className="px-4 pb-4 shadow shadow-gray-500">
-        <table className=" mt-10 w-full p-1  ">
+      <div className="px-4 pb-3 mt-5  shadow shadow-gray-500">
+        <table className=" w-full p-1  ">
           <thead>
-            <tr className=" hidden grid-cols-1 justify-items-center gap-x-2 px-2 pb-2 pt-8 sm:grid sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start ">
+            <tr className=" hidden grid-cols-1 justify-items-center gap-x-2 px-2 pb-2 pt-8 sm:grid sm:grid-cols-[70%,1fr,1fr] sm:justify-items-start ">
               <th>Title</th>
               <th>Date</th>
               <th className=" sm:justify-self-center">Duration</th>
@@ -30,9 +30,9 @@ export function EpisodeList() {
                   /* auto-rows-[50px] */
                   <tr
                     key={elm.trackId}
-                    className=" grid grid-cols-1 items-center justify-items-center gap-x-2 border-y-2 border-gray-200 px-2 py-1 even:bg-gray-100 sm:grid-cols-[65%,1fr,1fr] sm:justify-items-start  "
+                    className=" grid grid-cols-1 items-center justify-items-center gap-x-2 border-y border-gray-200 px-2 py-1 even:bg-gray-100 sm:grid-cols-[70%,1fr,1fr] sm:justify-items-start  "
                   >
-                    <td className=" line-clamp-2 flex w-full justify-between gap-x-3  text-blue-500 md:flex-none  ">
+                    <td className="  line-clamp-2 flex w-full justify-between gap-x-3 sm:w-[95%]  text-blue-500 md:flex-none  ">
                       <span className="  font-semibold capitalize text-black sm:hidden">
                         title
                       </span>
