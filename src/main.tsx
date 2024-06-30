@@ -7,12 +7,12 @@ import {
 } from "react-router-dom";
 import { ErrorPage } from "@/components/error-page";
 import { SkeletonUi } from "@/components/skeleton";
-import { PodcastDetail } from "@/views/podcast-detail-view";
-import { EpisodeDetail } from "@/views/podcast-detail-view/views/episode-detail-view";
-import { EpisodeList } from "@/views/podcast-detail-view/views/episode-list-view";
-import { getEpisodes } from "@/views/podcast-detail-view/views/episode-list-view/episode-list-loader";
-import { PodcastList } from "@/views/podcast-list-view";
-import { getPodcasts } from "@/views/podcast-list-view/podcast-list-loader";
+import { PodcastDetail } from "@/features/podcasts/views/podcast-detail-view";
+import { EpisodeDetail } from "@/features/podcasts/views/podcast-detail-view/views/episode-detail-view";
+import { EpisodeList } from "@/features/podcasts/views/podcast-detail-view/views/episode-list-view";
+import { getEpisodes } from "@/features/podcasts/views/podcast-detail-view/views/episode-list-view/episode-list-loader";
+import { PodcastList } from "@/features/podcasts/views/podcast-list-view";
+import { getPodcasts } from "@/features/podcasts/views/podcast-list-view/podcast-list-loader";
 
 import { App } from "./app";
 

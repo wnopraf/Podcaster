@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
-import { PodcastSearchData } from "@/views/podcast-list-view";
-import { filterCriteria } from "@/views/podcast-list-view/hooks/use-search";
+import { PodcastSearchData } from "@/features/podcasts/views/podcast-list-view";
+import { filterCriteria } from "@/features/podcasts/views/podcast-list-view/hooks/use-search";
 
 import podcastsJson from "../fixtures/podcast.json";
 
