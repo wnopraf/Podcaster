@@ -12,7 +12,7 @@ export function EpisodeList() {
           Episodes: &nbsp;{data.resultCount}
         </h1>
       </header>
-      <div className="px-4 pb-3 mt-5  shadow shadow-gray-500">
+      <div className="mt-5 px-4 pb-3  shadow shadow-gray-500">
         <table className=" w-full p-1  ">
           <thead>
             <tr className=" hidden grid-cols-1 justify-items-center gap-x-2 px-2 pb-2 pt-8 sm:grid sm:grid-cols-[70%,1fr,1fr] sm:justify-items-start ">
@@ -32,7 +32,7 @@ export function EpisodeList() {
                     key={elm.trackId}
                     className=" grid grid-cols-1 items-center justify-items-center gap-x-2 border-y border-gray-200 px-2 py-1 even:bg-gray-100 sm:grid-cols-[70%,1fr,1fr] sm:justify-items-start  "
                   >
-                    <td className="  line-clamp-2 flex w-full justify-between gap-x-3 sm:w-[95%]  text-blue-500 md:flex-none  ">
+                    <td className="  line-clamp-2 flex w-full justify-between gap-x-3 text-blue-500  sm:w-[95%] md:flex-none  ">
                       <span className="  font-semibold capitalize text-black sm:hidden">
                         title
                       </span>
