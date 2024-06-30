@@ -18,7 +18,9 @@ export function PodcastDetail() {
             />
           </div>
           <div className="mt-8 border-y border-gray-300 py-6">
-            <h1 className="font-semibold">{podcast?.["im:name"].label}</h1>
+            <h1 className="font-semibold text-xl">
+              {podcast?.["im:name"].label}
+            </h1>
             <p className=" italic">
               <span>by</span>
               <span className="capitalize">
