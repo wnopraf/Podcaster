@@ -9,9 +9,9 @@ export function getPodcasts(queryClient: QueryClient) {
       queryFn: async () => {
         const data = await fetch(PODCAST_LIST_URL).then((data) => data.json());
 
-        return JSON.parse(data.contents);
+        return data?.feed.entry;
       },
     });
-    return data?.feed.entry;
+    return data;
   };
 }

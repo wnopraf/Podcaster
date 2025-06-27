@@ -27,6 +27,9 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.2.1
         version: 4.2.1(prettier@2.8.8)
+      '@tanstack/eslint-plugin-query':
+        specifier: ^5.43.1
+        version: 5.43.1(eslint@8.57.0)(typescript@5.4.5)
       '@types/node':
         specifier: ^20.14.2
         version: 20.14.2

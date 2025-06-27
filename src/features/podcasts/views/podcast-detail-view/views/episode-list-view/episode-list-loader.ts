@@ -7,11 +7,7 @@ import {
 } from "@/config/site";
 
 const makeUrlDetailPodcast = (id: string) => {
-  return (
-    PODCAST_DETAIL_ROOT_URL +
-    encodeURIComponent(id) +
-    PODCAST_DETAIL_QUERY_PARAMS_URL
-  );
+  return PODCAST_DETAIL_ROOT_URL + id + PODCAST_DETAIL_QUERY_PARAMS_URL;
 };
 
 export function getEpisodes(queryClient: QueryClient) {
@@ -23,7 +19,8 @@ export function getEpisodes(queryClient: QueryClient) {
       queryKey: ["PodcastDetail", params.podcastId],
       queryFn: async () => {
         const data = await fetch(podcastUrl).then((res) => res.json());
-        return JSON.parse(data.contents);
+
+        return data;
       },
     });
     return data;

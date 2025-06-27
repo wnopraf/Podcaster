@@ -21,9 +21,6 @@ import "./index.css";
 import { experimental_createPersister } from "@tanstack/query-persist-client-core";
 import { QueryClient } from "@tanstack/react-query";
 
-
-
-
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -56,11 +53,13 @@ const routes: RouteObject[] = [
             index: true,
             loader: getEpisodes(queryClient),
             element: <EpisodeList />,
+            errorElement: <ErrorPage />,
           },
           {
             path: "episode/:episodeId",
             element: <EpisodeDetail />,
             loader: getEpisodes(queryClient),
+            errorElement: <ErrorPage />,
           },
         ],
       },
