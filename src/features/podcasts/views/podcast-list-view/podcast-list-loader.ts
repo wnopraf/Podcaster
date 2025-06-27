@@ -8,7 +8,10 @@ const podcastsCache =
     : new CacheLS<Podcaster.PodCastApi>();
 podcastsCache.setCache("podcastList", PODCAST_LIST_URL);
 export async function getPodcasts() {
-  const data = await cacheApiFetcher("podcastList", podcastsCache);
+  const data = await cacheApiFetcher<Podcaster.PodCastApi>(
+    "podcastList",
+    podcastsCache
+  );
 
   return data?.feed.entry;
 }

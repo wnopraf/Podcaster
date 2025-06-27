@@ -69,12 +69,9 @@ export async function cacheApiFetcher<T>(
     if (cacheobj !== null) {
       const { resourceUrl } = cacheobj;
       try {
-        const data = (await fetch(resourceUrl).then((result) =>
-          result.json()
-        )) as { contents: string };
-        const jsonData = JSON.parse(data.contents) as T;
-        cache.setItem(id, jsonData);
-        return jsonData;
+        const data = await fetch(resourceUrl).then((result) => result.json());
+        cache.setItem(id, data);
+        return data;
       } catch (error) {
         console.log(error);
       }
